@@ -1,0 +1,33 @@
+.product_infos {
+  display: flex;
+  justify-content: center;
+  margin: 50px;
+}
+.product_image,
+.product_detail {
+  flex: 1;
+}
+
+.product_image {
+  object-fit: contain;
+  max-width: 50%;
+  margin-right: 50px;
+}
+
+.product_description {
+  text-align: justify;
+}
+
+.product_price {
+  text-align: right;
+}
+.product_valid {
+  float: right;
+  padding: 10px;
+  background-color: lightblue;
+  border: none;
+  cursor: pointer;
+}
+.product_detail {
+  padding-right: 50px;
+}

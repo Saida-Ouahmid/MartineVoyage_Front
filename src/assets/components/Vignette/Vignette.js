@@ -12,7 +12,7 @@ import "./style.css";
 class Vignette extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    /*this.state = {
       title: "Titre",
       description:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
@@ -20,23 +20,23 @@ class Vignette extends Component {
       image: "/images/produit1.jpg",
       categorie: "mer",
       saison: "été",
-    };
+    };*/
   }
   click = () => {
     /**
      * Lien vers la page produit concernée
-     */ alert("Pouic");
+     */ alert("Redirection page");
   };
 
   render() {
     return (
       <div className="vignette_produit">
         <div className="texte_vignette">
-          <h2>{this.state.title}</h2>
-          <p>{this.state.description}</p>
+          <h2>{this.props.title}</h2>
+          <p>{this.props.children}</p>
         </div>
         <p className="price_tag">
-          A partir de <br></br> {this.state.prix} €
+          A partir de <br></br> {this.props.prix} €
         </p>
 
         <div>
