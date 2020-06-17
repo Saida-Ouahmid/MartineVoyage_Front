@@ -1,10 +1,27 @@
 import React, { Component } from "react";
 import Navbar from "../../assets/components/Navbar/Navbar";
+import ImageGallery from "react-image-gallery";
 /**
  * Import Barre de recherche
  */
 import "./style.css";
 import Footer from "../../assets/components/Footer/Footer";
+
+const images = [
+  {
+    original: "https://picsum.photos/id/1018/1000/600/",
+    thumbnail: "https://picsum.photos/id/1018/250/150/",
+  },
+  {
+    original: "https://picsum.photos/id/1015/1000/600/",
+    thumbnail: "https://picsum.photos/id/1015/250/150/",
+  },
+  {
+    original: "https://picsum.photos/id/1019/1000/600/",
+    thumbnail: "https://picsum.photos/id/1019/250/150/",
+  },
+];
+
 class Product extends Component {
   constructor(props) {
     super(props);
@@ -49,11 +66,9 @@ class Product extends Component {
     return (
       <div className="product">
         <div className="product_infos">
-          <img
-            src="/images/kitesurf.jpg"
-            alt="Visuel"
-            className="product_image"
-          ></img>
+          <div className="product_image">
+            <ImageGallery items={images} />
+          </div>
           <div className="product_detail">
             <h3 className="product_title">{this.state.title}</h3>
             <p className="product_description">{this.state.description}</p>
