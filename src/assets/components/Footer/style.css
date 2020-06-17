@@ -1,0 +1,26 @@
+.block {
+  text-align: center;
+}
+.footer_contact {
+  background-color: lightblue;
+  height: 200px;
+  padding-bottom: 2%;
+}
+
+.footer_contact h2 {
+  text-align: center;
+  padding-top: 3%;
+}
+
+.colonne {
+  display: inline-block;
+  vertical-align: top;
+  width: 30%;
+  text-align: center;
+}
+
+.footer_infos {
+  text-align: center;
+  padding: 5%;
+  background-color: skyblue;
+}
