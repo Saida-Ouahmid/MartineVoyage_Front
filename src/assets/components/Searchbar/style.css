@@ -1,0 +1,21 @@
+/*barre de recherche*/
+.barreDeRecherche {
+  margin: auto;
+}
+
+#recherche {
+  /* position: absolute;*/
+  margin-top: 20px;
+
+  width: 450px;
+  height: 40px;
+}
+/*button*/
+.buttonDeRecherche {
+  width: 40px;
+  height: 40px;
+  margin-top: 20px;
+}
+.searchBarre {
+  text-align: center;
+}

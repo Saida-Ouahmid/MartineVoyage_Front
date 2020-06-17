@@ -1,0 +1,19 @@
+.categorieProduitTitre {
+  text-align: center;
+  background-color: #12dbf3;
+  font-family: "Lexend Tera", sans-serif;
+}
+/*texte */
+
+.categorieProduitTexte p {
+  text-align: center;
+  font-weight: bold;
+  padding-top: 50px;
+  font-size: 20px;
+  font-family: "Lexend Tera", sans-serif;
+}
+/*barre de recherche*/
+.categorieProduitTitre {
+  text-align: center;
+  margin: auto;
+}

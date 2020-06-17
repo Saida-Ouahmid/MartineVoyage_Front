@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <h1>MARTINE VOYAGE</h1>
+        <img src="/images/logonoir.png" className="logo" />
 
         <nav>
           <ul>
@@ -43,19 +43,6 @@ class App extends Component {
         </nav>
         <div className="homeImage">
           <img src="/images/mer-montagne.jpg" alt="mer-montagne" />
-        </div>
-        <div className="barreDeRecherche">
-          <button className="buttonDeRecherche">
-            <i class="fas fa-search"></i>
-          </button>
-          <label for="recherche"></label>
-          <input
-            type="search"
-            id="recherche"
-            name="recherche"
-            aria-label="Search through site content"
-            placeholder="rechercher sur le site"
-          ></input>
         </div>
       </div>
     );
