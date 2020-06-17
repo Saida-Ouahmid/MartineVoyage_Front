@@ -5,7 +5,7 @@ import Navbar from "../../assets/components/Navbar/Navbar";
 /**
  * * Import Barre de recherche
  */
-import "./style.css";
+import "./style.scss";
 
 class Home extends Component {
   constructor(props) {

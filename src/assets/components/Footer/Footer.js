@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./style.css";
+import "./style.scss";
 
 class Footer extends Component {
   constructor(props) {
@@ -24,11 +24,20 @@ class Footer extends Component {
             </div>
             <div className="colonne resaux_sociaux">
               <h4>Suivez nos aventures</h4>
+              <a href="https://facebook.fr">
+                <i class="fab fa-facebook fa-2x"></i>
+              </a>
+              <a href="https://instagram.fr">
+                <i class="fab fa-instagram fa-2x"></i>
+              </a>
+              <a href="https://twitter.fr">
+                <i class="fab fa-twitter fa-2x"></i>
+              </a>
             </div>
           </div>
         </div>
         <div className="footer_infos">
-          <img alt="logo"></img>
+          <img src="/images/logo.png" alt="logo"></img>
           <p>Les séjours</p>
           <p>Qui sommes-nous ?</p>
           <p>Mention légales</p>

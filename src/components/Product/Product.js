@@ -4,7 +4,7 @@ import ImageGallery from "react-image-gallery";
 /**
  * Import Barre de recherche
  */
-import "./style.css";
+import "./style.scss";
 import Footer from "../../assets/components/Footer/Footer";
 
 const images = [
@@ -34,7 +34,7 @@ class Product extends Component {
       image: "/images/produit1.jpg",
       categorie: "mer",
       saison: "été",
-      nombre_personne: 0,
+      nombre_personne: 1,
       depart: "",
       arrivee: "",
     };
@@ -72,38 +72,35 @@ class Product extends Component {
           <div className="product_detail">
             <h3 className="product_title">{this.state.title}</h3>
             <p className="product_description">{this.state.description}</p>
-
-            <p>Sélectionnez vos dates de séjour </p>
-            <span>Départ</span>
-            <input
-              type="date"
-              className="product_date"
-              onChange={this.depart}
-              value={this.state.depart}
-            />
-            <br></br>
-            <span>Arrivée</span>
-            <input
-              type="date"
-              className="product_date"
-              onChange={this.arrivee}
-              placeholder="Date d'arrivée"
-              value={this.state.arrivee}
-            />
-            <p>
-              Votre voyage est prévu du {this.state.depart} au{" "}
-              {this.state.arrivee}
-            </p>
-            <span> Nombre de personnes</span>
-            <input
-              type="number"
-              min="0"
-              max="10"
-              onChange={this.add}
-              value={this.state.nombre_personne}
-            />
-
-            <p className="product_price">Prix : {this.state.prix} €</p>
+            <section className="product_reservation">
+              <p>Sélectionnez vos dates de séjour </p>
+              <span>Du</span>
+              <input
+                type="date"
+                className="product_date"
+                onChange={this.depart}
+                value={this.state.depart}
+              />
+              <span>au</span>
+              <input
+                type="date"
+                className="product_date"
+                onChange={this.arrivee}
+                placeholder="Date d'arrivée"
+                value={this.state.arrivee}
+              />
+              <div className="nbr_produit">
+                <span> Nombre de personnes</span>
+                <input
+                  type="number"
+                  min="1"
+                  max="10"
+                  onChange={this.add}
+                  value={this.state.nombre_personne}
+                />
+              </div>
+            </section>
+            <p className="product_price">{this.state.prix} €</p>
             <input
               type="submit"
               className="product_valid"
