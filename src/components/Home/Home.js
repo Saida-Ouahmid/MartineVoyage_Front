@@ -15,28 +15,28 @@ class Home extends Component {
         {
           title: "Titre 1",
           prix: 400,
-          image: "/images/produit1.jpg",
+          image: "/images/kite.jpg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
         {
           title: "Titre 2",
           prix: 600,
-          image: "/images/produit1.jpg",
+          image: "/images/kite.jpg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
         {
           title: "Titre 3",
           prix: 350,
-          image: "/images/produit1.jpg",
+          image: "/images/kite.jpg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
         {
           title: "Titre 4",
           prix: 900,
-          image: "/images/produit1.jpg",
+          image: "/images/kite.jpg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
@@ -57,11 +57,11 @@ class Home extends Component {
   };
   render() {
     return (
-      <div className="home_page">
+      <div className="home-page">
         <Navbar />
         <h2>Les nouveaux voyages de Martine</h2>
         <div className="display">{this.display()}</div>
-        <p className="home_paragraphe">
+        <p className="home-paragraphe">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
           risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec,
           ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula

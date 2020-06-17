@@ -5,7 +5,7 @@
 /*Module imports*/
 import React, { Component } from "react";
 import Home from "../Home/Home";
-
+import Vignette from "../../assets/components/Vignette/Vignette";
 import Product from "../Product/Product";
 
 /* Style import*/

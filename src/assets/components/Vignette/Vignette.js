@@ -30,12 +30,12 @@ class Vignette extends Component {
 
   render() {
     return (
-      <div className="vignette_produit">
-        <div className="texte_vignette">
+      <div className="vignette-produit">
+        <div className="texte-vignette">
           <h2>{this.props.title}</h2>
           <p>{this.props.children}</p>
         </div>
-        <p className="price_tag">
+        <p className="price-tag">
           A partir de <br></br> {this.props.prix} €
         </p>
 
@@ -43,12 +43,12 @@ class Vignette extends Component {
           <button
             onClick={this.click}
             onmouseover=""
-            className="bouton_vignette"
+            className="bouton-vignette"
           >
             En savoir plus
           </button>
         </div>
-        <img src="/images/kite.jpg" className="img_vignette" alt="KiteSurf" />
+        <img src={this.props.image} className="img-vignette" alt="KiteSurf" />
       </div>
     );
   }

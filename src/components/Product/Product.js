@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import Navbar from "../../assets/components/Navbar/Navbar";
 import ImageGallery from "react-image-gallery";
+import Footer from "../../assets/components/Footer/Footer";
+import Vignette from "../../assets/components/Vignette/Vignette";
 /**
  * Import Barre de recherche
  */
 import "./style.scss";
-import Footer from "../../assets/components/Footer/Footer";
 
 const images = [
   {
@@ -65,31 +66,32 @@ class Product extends Component {
   render() {
     return (
       <div className="product">
-        <div className="product_infos">
-          <div className="product_image">
+        <Navbar />
+        <div className="product-infos">
+          <div className="product-image">
             <ImageGallery items={images} />
           </div>
-          <div className="product_detail">
-            <h3 className="product_title">{this.state.title}</h3>
-            <p className="product_description">{this.state.description}</p>
-            <section className="product_reservation">
+          <div className="product-detail">
+            <h3 className="product-title">{this.state.title}</h3>
+            <p className="product-description">{this.state.description}</p>
+            <section className="product-reservation">
               <p>Sélectionnez vos dates de séjour </p>
               <span>Du</span>
               <input
                 type="date"
-                className="product_date"
+                className="product-date"
                 onChange={this.depart}
                 value={this.state.depart}
               />
               <span>au</span>
               <input
                 type="date"
-                className="product_date"
+                className="product-date"
                 onChange={this.arrivee}
                 placeholder="Date d'arrivée"
                 value={this.state.arrivee}
               />
-              <div className="nbr_produit">
+              <div className="nbr-produit">
                 <span> Nombre de personnes</span>
                 <input
                   type="number"
@@ -100,15 +102,42 @@ class Product extends Component {
                 />
               </div>
             </section>
-            <p className="product_price">{this.state.prix} €</p>
+            <p className="product-price">{this.state.prix} €</p>
             <input
               type="submit"
-              className="product_valid"
+              className="product-valid"
               onClick={this.click}
               value="Je réserve"
             />
+            <p>Une question ?</p>
+            <a href="mailto=bonjourmartine@martinevoyage.com">
+              <button>Contactez-nous</button>
+            </a>
           </div>
         </div>
+        <div className="suggestion">
+          <h2>Ces séjours pourraient aussi vous plaire</h2>
+          <Vignette image="/images/kite.jpg" />
+          <Vignette image="/images/kite.jpg" />
+          <Vignette image="/images/kite.jpg" />
+          <p className="informations">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+            risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
+            nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
+            ligula massa, varius a, semper congue, euismod non, mi. Proin
+            porttitor, orci nec nonummy molestie, enim est eleifend mi, non
+            fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa,
+            scelerisque vitae, consequat in, pretium a, enim. Pellentesque
+            congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum
+            bibendum augue. Praesent egestas leo in pede. Praesent blandit odio
+            eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum
+            ante ipsum primis in faucibus orci luctus et ultrices posuere
+            cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque
+            fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
+          </p>
+        </div>
+        <h2>Vos plus belles aventures</h2>
+
         <Footer />
       </div>
     );

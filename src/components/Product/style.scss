@@ -1,39 +1,46 @@
 .product {
   @import "~react-image-gallery/styles/css/image-gallery.css";
-  .product_infos {
+  .product-infos {
     display: flex;
     justify-content: center;
     margin: 50px;
   }
-  .product_image,
-  .product_detail {
+  .product-image,
+  .product-detail {
     flex: 1;
   }
 
-  .product_image {
+  .product-image {
     object-fit: contain;
     max-width: 50%;
     margin-right: 50px;
   }
 
-  .product_description {
+  .product-description {
     text-align: justify;
   }
 
-  .product_price {
+  .product-price {
     text-align: right;
     font-size: 40px;
     margin: 10px;
   }
-  .product_valid {
+  .product-valid {
     float: right;
     padding: 10px;
     background-color: lightblue;
     border: none;
     cursor: pointer;
   }
-  .product_date,
-  .nbr_produit input {
+  .product-date,
+  .nbr-produit input {
     margin: 10px;
+  }
+  .suggestion {
+    text-align: center;
+  }
+  .informations {
+    margin: 50px 200px;
+    text-align: justify;
   }
 }
