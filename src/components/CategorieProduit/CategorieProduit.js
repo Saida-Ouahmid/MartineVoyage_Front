@@ -85,7 +85,7 @@ class CategorieProduit extends Component {
             <br />
             du cadre et de l'hébergement, de l'esprit des hôtes et de la qualité
             <br />
-            pédagogique des moniteurs, qui tous détenteurs d'un diplôme d'état
+            pédagogique des moniteurs, qui tous détenteur d'un diplôme d'état
             <br />( ou équivalent).
           </p>
         </div>
