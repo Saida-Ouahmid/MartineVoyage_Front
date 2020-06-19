@@ -35,7 +35,7 @@ class CategorieProduit extends Component {
             découvrez les plus beaux spots des environs et profitez de conseils
             de moniteurs expérimentés. Formules 2 à 14 jours en <br />
             demi-pension ou tout compris. Nombreuses activités annexes
-            disponibles (yoga, vtt, rando...).
+            disponibles (yog, vtt, rando...).
           </p>
         </div>
         <div className="vignette-container">
