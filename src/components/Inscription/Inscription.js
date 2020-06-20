@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import Navbar from "../../assets/components/Navbar/Navbar";
+import Footer from "../../assets/components/Footer/Footer.js";
 
 /*style import*/
 import "./style.css";
@@ -6,89 +8,100 @@ import "./style.css";
 class inscription extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: "" };
+    this.state = {
+      nom: null,
+      prenom: null,
+      age: null,
+      mail: null,
+      tel: null,
+      password: null,
+      conditions: null,
+    };
+  }
+  /*fonction pour ecrire dans nos input*/
+  change = (event) => {
+    this.setState({
+      [event.target.id]: event.target.value, // identifier Id de l'input = choisir la valeur qui se trouve dans l'input
+    });
+  };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  handleSubmit(event) {
-    alert("Le nom a été soumis : " + this.state.value);
-    event.preventDefault();
-  }
+  submit = (event) => {
+    event.preventDefault(); //empecher le formulaire de recharger la page
+    console.log(this.state); // envoyé le contenu du formulaire dans la console
+  };
   render() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Mme
-            <input
-              type="radio"
-              name="sexe"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            M.
-            <input
-              type="radio"
-              name="sexe"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Nom :
+        <Navbar />
+        <div className="identifiants">
+          <h3>Créez votre compte client</h3>
+          <form onSubmit={this.submit}>
+            <label htmlFor="nom">Nom</label>
+            <br />
             <input
               type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
+              id="nom"
+              placeholder="Nom"
+              onChange={this.change}
             />
-          </label>
-          <br />
-          <label>
-            Prénom :
+            <br />
+            <label htmlFor="prenom">Prénom</label>
+            <br />
             <input
               type="text"
-              value={this.state.value}
-              onChange={this.handleChange}
+              id="prenom"
+              placeholder="Prénom"
+              onChange={this.change}
             />
-          </label>
-          <br />
-          <label>
-            Date de naissance :
+            <br />
+            <label htmlFor="age">Age</label>
+            <br />
             <input
-              type="date"
-              value={this.state.value}
-              onChange={this.handleChange}
+              type="number"
+              id="age"
+              placeholder="Age"
+              onChange={this.change}
             />
-          </label>
-          <br />
-          <label>
-            Couriel :
-            <input
-              type="email"
-              value={this.state.value}
-              onChange={this.handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Tel :
+            <br />
+            <label htmlFor="tel">Tel</label>
+            <br />
             <input
               type="tel"
-              value={this.state.value}
-              onChange={this.handleChange}
+              id="tel"
+              placeholder="Téléphone"
+              onChange={this.change}
             />
-          </label>
-          <br />
-          <input type="submit" value="Envoyer" />
-        </form>
+            <br />
+            <label htmlFor="mail">Mail</label>
+            <br />
+            <input
+              type="mail"
+              id="mail"
+              placeholder="Mail"
+              onChange={this.change}
+            />
+            <br />
+            <label htmlFor="password">Mot de passe</label>
+            <br />
+            <input
+              type="password"
+              id="password"
+              placeholder="Mot de passe"
+              onChange={this.change}
+            />
+            <br />
+            <input
+              type="checkbox"
+              name="conditions"
+              id="conditions"
+              onChange={this.change}
+            />
+            <label for="conditions">J'ai lu les conditions</label>
+            <br />
+            <button>Enregistrer</button>
+          </form>
+        </div>
+        <Footer />
       </div>
     );
   }
