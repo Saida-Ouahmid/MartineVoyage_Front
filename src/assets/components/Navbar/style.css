@@ -18,27 +18,34 @@
 nav ul {
   list-style-type: none;
   display: inline;
-  font-family: "Satisfy", cursive;
+  font-family: "Lexend Tera", sans-serif;
+  font-weight: bold;
 }
 nav ul li {
   float: right;
   margin-right: 20px;
   margin-top: 20px;
+  cursor: pointer;
 }
 nav .dropDown ul {
   display: none;
   /* position: absolute;*/
 }
-nav .dropDown:hover ul {
-  display: inline-block;
+nav .dropDown:hover .dropDownChild {
+  display: block;
+  position: absolute;
 }
 
+.dropDownChild a {
+  display: block;
+  cursor: pointer;
+}
 /*home image*/
 
 .homeImage img {
   /* position: absolute;*/
   width: 980px;
-  margin-top: 42px;
+  margin-top: 48px;
 }
 
 /*barre de recherche*/

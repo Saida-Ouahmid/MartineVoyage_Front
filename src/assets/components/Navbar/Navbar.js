@@ -17,26 +17,30 @@ class App extends Component {
         <nav>
           <ul>
             <li className="dropDown">
-              <a>Panier</a>
+              <a>
+                <i class="fas fa-cart-arrow-down"></i>
+              </a>
             </li>
             <li className="dropDown">
-              <a>Inscription</a>
+              <a>
+                <i class="fas fa-sign-in-alt"></i>
+              </a>
             </li>
             <li className="dropDown">
               <a>inspirez-moi</a>
             </li>
             <li className="dropDown">
               <a>Je pars quand?</a>
-              <ul>
-                <li> En hiver</li>
-                <li>En été</li>
+              <ul className="dropDownChild">
+                <a> En hiver</a>
+                <a>En été</a>
               </ul>
             </li>
             <li className="dropDown">
               <a>Je pars ou?</a>
-              <ul>
-                <li> En mer</li>
-                <li>En montagne</li>
+              <ul className="dropDownChild">
+                <a> En mer</a>
+                <a>En montagne</a>
               </ul>
             </li>
           </ul>

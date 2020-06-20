@@ -41,50 +41,48 @@ class CategorieProduit extends Component {
         <div className="vignette-container">
           <Vignette
             prix={800}
-            title="titre1"
+            title="Kitsurf"
             description="c'est bon pour le moral"
-            image="/images/kite.jpg"
+            image="/images/kitesurf.jpg"
+          />
+          <Vignette
+            prix={600}
+            title="Surf"
+            description="c'est bon pour le moral"
+            image="/images/surf.jpg"
+          />
+          <Vignette
+            prix={400}
+            title="Plongée"
+            description="c'est bon pour le moral"
+            image="/images/produitplongee.jpg"
+          />
+          <Vignette
+            prix={200}
+            title="Escalade"
+            description="c'est bon pour le moral"
+            image="/images/escalade.jpg"
+          />
+          <Vignette
+            prix={400}
+            title="Ski"
+            description="c'est bon pour le moral"
+            image="/images/ski.jpg"
           />
           <Vignette
             prix={800}
-            title="titre1"
+            title="Snowkite"
             description="c'est bon pour le moral"
-            image="/images/kite.jpg"
-          />
-          <Vignette
-            prix={800}
-            title="titre1"
-            description="c'est bon pour le moral"
-            image="/images/kite.jpg"
-          />
-          <Vignette
-            prix={800}
-            title="titre1"
-            description="c'est bon pour le moral"
-            image="/images/kite.jpg"
-          />
-          <Vignette
-            prix={800}
-            title="titre1"
-            description="c'est bon pour le moral"
-            image="/images/kite.jpg"
-          />
-          <Vignette
-            prix={800}
-            title="titre1"
-            description="c'est bon pour le moral"
-            image="/images/kite.jpg"
+            image="/images/produitsnowkit.jpg"
           />
         </div>
 
         <div className="categorieProduitTexteDuBas">
           <p>
             L'équipe MARTINE VOYAGE sélectionne pour vous les meilleurs
-            <br />
             activités sur les spots du monde entiers, en fonction de la qualité
             <br />
             du cadre et de l'hébergement, de l'esprit des hôtes et de la qualité
-            <br />
             pédagogique des moniteurs, qui tous détenteur d'un diplôme d'état
             <br />( ou équivalent).
           </p>

@@ -8,11 +8,12 @@
 }
 .img_vignette {
   box-shadow: 3px 3px 3px grey;
+  width: 350px;
 }
 .texte_vignette {
   position: absolute;
   margin-top: 205px;
-  background-color: snow;
+  background-color: rgba(255, 255, 255, 0.7);
   width: 280px;
   padding-left: 20px;
   padding-right: 10px;
