@@ -13,30 +13,30 @@ class Home extends Component {
     this.state = {
       travel: [
         {
-          title: "Titre 1",
+          title: "Séjour de plongée",
           prix: 400,
-          image: "/images/kite.jpg",
+          image: "/images/diving.jpg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
         {
-          title: "Titre 2",
+          title: "Séjour de Kitesurf",
           prix: 600,
-          image: "/images/kite.jpg",
+          image: "/images/kitesurf2.jpg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
         {
-          title: "Titre 3",
+          title: "Séjour d'escalade",
           prix: 350,
-          image: "/images/kite.jpg",
+          image: "/images/grimpe.jpg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
         {
-          title: "Titre 4",
+          title: "Séjour Snowboard",
           prix: 900,
-          image: "/images/kite.jpg",
+          image: "/images/snowboard.jpg",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         },
@@ -47,10 +47,13 @@ class Home extends Component {
     let contentDisplay = [];
     this.state.travel.forEach((element, index) => {
       contentDisplay.push(
-        <Vignette key={index} image={element.image} prix={element.prix}>
-          {" "}
-          {element.description}
-        </Vignette>
+        <Vignette
+          key={index}
+          image={element.image}
+          prix={element.prix}
+          title={element.title}
+          description={element.description}
+        />
       );
     });
     return contentDisplay;

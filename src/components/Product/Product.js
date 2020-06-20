@@ -117,9 +117,10 @@ class Product extends Component {
         </div>
         <div className="suggestion">
           <h2>Ces séjours pourraient aussi vous plaire</h2>
-          <Vignette image="/images/kite.jpg" />
-          <Vignette image="/images/kite.jpg" />
-          <Vignette image="/images/kite.jpg" />
+          <div className="composant-vignette">
+            <Vignette image="/images/kitesurf2.jpg" />
+            <Vignette image="/images/diving.jpg" />
+          </div>
           <p className="informations">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
             risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
@@ -136,7 +137,6 @@ class Product extends Component {
             fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
           </p>
         </div>
-        <h2>Vos plus belles aventures</h2>
 
         <Footer />
       </div>

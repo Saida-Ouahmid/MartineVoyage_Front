@@ -31,13 +31,14 @@ class Vignette extends Component {
   render() {
     return (
       <div className="vignette-produit">
-        <div className="texte-vignette">
-          <h2>{this.props.title}</h2>
-          <p>{this.props.children}</p>
-        </div>
+        <img src={this.props.image} className="img-vignette" alt="KiteSurf" />
         <p className="price-tag">
           A partir de <br></br> {this.props.prix} €
         </p>
+        <div className="texte-vignette">
+          <h2>{this.props.title}</h2>
+          <p>{this.props.description}</p>
+        </div>
 
         <div>
           <button
@@ -48,7 +49,6 @@ class Vignette extends Component {
             En savoir plus
           </button>
         </div>
-        <img src={this.props.image} className="img-vignette" alt="KiteSurf" />
       </div>
     );
   }
