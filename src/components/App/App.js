@@ -7,6 +7,8 @@ import React, { Component } from "react";
 import Home from "../Home/Home";
 import Vignette from "../../assets/components/Vignette/Vignette";
 import Product from "../Product/Product";
+import CategorieProduit from "../CategorieProduit/CategorieProduit";
+import Inscription from "../Inscription/Inscription";
 
 /* Style import*/
 import "./App.scss";
@@ -20,7 +22,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Product />
+        {/*<Home />*/}
+        {/*<CategorieProduit />*/}
+        <Inscription />
       </div>
     );
   }

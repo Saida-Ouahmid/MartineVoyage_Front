@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Footer from "../../assets/components/Footer/Footer.js";
 import Vignette from "../../assets/components/Vignette/Vignette.js";
 import Navbar from "../../assets/components/Navbar/Navbar";
+import Searchbar from "../../assets/components/Searchbar/Searchbar";
 /**
  * * Import Barre de recherche
  */
@@ -62,6 +63,7 @@ class Home extends Component {
     return (
       <div className="home-page">
         <Navbar />
+        <Searchbar />
         <h2>Les nouveaux voyages de Martine</h2>
         <div className="display">{this.display()}</div>
         <p className="home-paragraphe">
