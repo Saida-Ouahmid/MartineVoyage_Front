@@ -7,7 +7,7 @@ import React, { Component } from "react";
 /**
  * Import Feuille de style - Vignette produit
  */
-import "./style.css";
+import "./style.scss";
 
 class Vignette extends Component {
   constructor(props) {

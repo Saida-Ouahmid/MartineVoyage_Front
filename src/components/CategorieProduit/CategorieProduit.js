@@ -5,7 +5,7 @@ import Vignette from "../../assets/components/Vignette/Vignette.js";
 import Footer from "../../assets/components/Footer/Footer.js";
 
 /*style import*/
-import "./style.css";
+import "./style.scss";
 
 class CategorieProduit extends Component {
   constructor(props) {
@@ -13,7 +13,7 @@ class CategorieProduit extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <Navbar />
         <Searchbar />
         <div className="categorieProduitTitre">

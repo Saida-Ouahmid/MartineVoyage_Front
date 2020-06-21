@@ -10,7 +10,7 @@ import CategorieProduit from "../CategorieProduit/CategorieProduit";
 import Inscription from "../Inscription/Inscription";
 
 /* Style import*/
-import "./App.css";
+import "./App.scss";
 
 /*Main app component*/
 class App extends Component {

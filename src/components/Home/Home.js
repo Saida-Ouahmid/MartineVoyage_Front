@@ -6,12 +6,12 @@ import Searchbar from "../../assets/components/Searchbar/Searchbar";
 /**
  * * Import Barre de recherche
  */
-import "./style.css";
+import "./style.scss";
 
 class Home extends Component {
   render() {
     return (
-      <div className="home_page">
+      <div className="home-page">
         <Navbar />
         <h2>Les nouveaux voyages de Martine</h2>
         <Searchbar />

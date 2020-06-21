@@ -3,7 +3,7 @@ import Navbar from "../../assets/components/Navbar/Navbar";
 import Footer from "../../assets/components/Footer/Footer.js";
 
 /*style import*/
-import "./style.css";
+import "./style.scss";
 
 class inscription extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class inscription extends Component {
   };
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <Navbar />
         <div className="identifiants">
           <h3>Créez votre compte client</h3>
