@@ -62,7 +62,6 @@ class Home extends Component {
   render() {
     return (
       <div className="home-page">
-        <Navbar />
         <Searchbar />
         <h2>Les nouveaux voyages de Martine</h2>
         <div className="display">{this.display()}</div>
@@ -75,7 +74,6 @@ class Home extends Component {
           sit ci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris
           ac
         </p>
-        <Footer />
       </div>
     );
   }

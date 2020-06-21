@@ -3,6 +3,7 @@ import React, { Component } from "react";
 
 /*style import*/
 import "./style.scss";
+import { Link } from "react-router-dom";
 
 /*main app component*/
 class App extends Component {
@@ -12,7 +13,9 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <img src="/images/logonoir.png" className="logo" />
+        <Link to="/">
+          <img src="/images/logonoir.png" className="logo" />
+        </Link>
 
         <nav>
           <ul>
@@ -22,22 +25,34 @@ class App extends Component {
               </a>
             </li>
             <li className="dropDown">
-              <a>
-                <i class="fas fa-sign-in-alt"></i>
-              </a>
+              <Link to="/Inscription">
+                <a>
+                  <i class="fas fa-sign-in-alt"></i>
+                </a>
+              </Link>
             </li>
             <li className="dropDown">
               <a>inspirez-moi</a>
             </li>
+
             <li className="dropDown">
-              <a>Je pars quand?</a>
+              <Link to="/je-pars-quand">
+                <a>Je pars quand?</a>
+              </Link>
               <ul className="dropDownChild">
-                <a> En hiver</a>
-                <a>En été</a>
+                <Link to="/je-pars-quand">
+                  <a> En hiver</a>
+                </Link>
+                <Link to="/je-pars-quand">
+                  <a>En été</a>
+                </Link>
               </ul>
             </li>
+
             <li className="dropDown">
-              <a>Je pars ou?</a>
+              <Link to="/Je-pars-ou">
+                <a>Je pars ou?</a>
+              </Link>
               <ul className="dropDownChild">
                 <a> En mer</a>
                 <a>En montagne</a>

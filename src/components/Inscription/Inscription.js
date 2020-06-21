@@ -5,7 +5,7 @@ import Footer from "../../assets/components/Footer/Footer.js";
 /*style import*/
 import "./style.scss";
 
-class inscription extends Component {
+class Inscription extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -32,7 +32,6 @@ class inscription extends Component {
   render() {
     return (
       <div className="wrapper">
-        <Navbar />
         <div className="identifiants">
           <h3>Créez votre compte client</h3>
           <form onSubmit={this.submit}>
@@ -101,10 +100,9 @@ class inscription extends Component {
             <button>Enregistrer</button>
           </form>
         </div>
-        <Footer />
       </div>
     );
   }
 }
 
-export default inscription;
+export default Inscription;

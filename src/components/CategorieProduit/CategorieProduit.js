@@ -14,7 +14,6 @@ class CategorieProduit extends Component {
   render() {
     return (
       <div className="wrapper">
-        <Navbar />
         <Searchbar />
         <div className="categorieProduitTitre">
           <h1>VACANCES EN MER OU EN MONTAGNE</h1>
@@ -87,7 +86,6 @@ class CategorieProduit extends Component {
             <br />( ou équivalent).
           </p>
         </div>
-        <Footer />
       </div>
     );
   }

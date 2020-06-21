@@ -66,7 +66,6 @@ class Product extends Component {
   render() {
     return (
       <div className="product">
-        <Navbar />
         <div className="product-infos">
           <div className="product-image">
             <ImageGallery items={images} />
@@ -137,8 +136,6 @@ class Product extends Component {
             fermentum. Maecenas adipiscing ante non diam sodales hendrerit.
           </p>
         </div>
-
-        <Footer />
       </div>
     );
   }

@@ -8,6 +8,7 @@ import React, { Component } from "react";
  * Import Feuille de style - Vignette produit
  */
 import "./style.scss";
+import { Link } from "react-router-dom";
 
 class Vignette extends Component {
   constructor(props) {
@@ -22,11 +23,11 @@ class Vignette extends Component {
       saison: "été",
     };*/
   }
-  click = () => {
+  /*click = () => {
     /**
      * Lien vers la page produit concernée
-     */ alert("Redirection page");
-  };
+    // * alert("Redirection page");
+  };*/
 
   render() {
     return (
@@ -41,13 +42,15 @@ class Vignette extends Component {
         </div>
 
         <div>
-          <button
-            onClick={this.click}
-            onmouseover=""
-            className="bouton-vignette"
-          >
-            En savoir plus
-          </button>
+          <Link to="/Product">
+            <button
+              /*onClick={this.click}*/
+              onmouseover=""
+              className="bouton-vignette"
+            >
+              En savoir plus
+            </button>
+          </Link>
         </div>
       </div>
     );

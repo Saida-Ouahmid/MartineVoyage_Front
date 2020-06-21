@@ -5,13 +5,16 @@
 /*Module imports*/
 import React, { Component } from "react";
 import Home from "../Home/Home";
-import Vignette from "../../assets/components/Vignette/Vignette";
+
 import Product from "../Product/Product";
 import CategorieProduit from "../CategorieProduit/CategorieProduit";
 import Inscription from "../Inscription/Inscription";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "../../assets/components/Navbar/Navbar";
 
 /* Style import*/
 import "./App.scss";
+import Footer from "../../assets/components/Footer/Footer";
 
 /*Main app component*/
 class App extends Component {
@@ -22,9 +25,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/*<Home />*/}
-        {/*<CategorieProduit />*/}
-        <Inscription />
+        <Router>
+          <Navbar />
+
+          <Switch>
+            <Route path="/je-pars-quand" exact component={CategorieProduit} />
+            <Route path="/je-pars-ou" exact component={CategorieProduit} />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/Product" component={Product} />
+            <Route path="/Inscription" exact component={Inscription} />
+          </Switch>
+          <Footer />
+        </Router>
       </div>
     );
   }
