@@ -2,7 +2,7 @@
 import React, { Component } from "react";
 
 /*style import*/
-import "./style.css";
+import "./style.scss";
 
 /*main app component*/
 class App extends Component {

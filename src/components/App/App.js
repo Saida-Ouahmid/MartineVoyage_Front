@@ -5,10 +5,11 @@
 /*Module imports*/
 import React, { Component } from "react";
 import Home from "../Home/Home";
+import Vignette from "../../assets/components/Vignette/Vignette";
 import Product from "../Product/Product";
 
 /* Style import*/
-import "./App.css";
+import "./App.scss";
 
 /*Main app component*/
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Home />
+        <Product />
       </div>
     );
   }
