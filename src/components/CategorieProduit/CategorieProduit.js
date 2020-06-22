@@ -16,7 +16,7 @@ class CategorieProduit extends Component {
       <div className="wrapper">
         <Searchbar />
         <div className="categorieProduitTitre">
-          <h1>VACANCES EN MER OU EN MONTAGNE</h1>
+          <h1>Vacances à la {this.props.match.params.category}</h1>
           <p>
             Réservez en toute confiance - nous proposons des conditions de
             <br />
@@ -28,8 +28,8 @@ class CategorieProduit extends Component {
             Découvrez nos stages et séjours surf dans nos différentes
             destinations :
             <br />
-            France, Portugal, Maroc, Bali, Costa Rica... Quelque soit la durée{" "}
-            de vos vacances , adoptez le rythme de la vie dans votre camp,{" "}
+            France, Portugal, Maroc, Bali, Costa Rica... Quelque soit la durée
+            de vos vacances , adoptez le rythme de la vie dans votre camp,
             <br />
             découvrez les plus beaux spots des environs et profitez de conseils
             de moniteurs expérimentés. Formules 2 à 14 jours en <br />
@@ -42,32 +42,39 @@ class CategorieProduit extends Component {
             prix={800}
             title="Kitsurf"
             description="c'est bon pour le moral"
-            image="/images/kitesurf.jpg"
+            image="/images/kitesurf2.jpg"
           />
+
           <Vignette
             prix={600}
             title="Surf"
             description="c'est bon pour le moral"
             image="/images/surf.jpg"
           />
+        </div>
+        <div className="vignette-container">
           <Vignette
             prix={400}
             title="Plongée"
             description="c'est bon pour le moral"
-            image="/images/produitplongee.jpg"
+            image="/images/diving.jpg"
           />
+
           <Vignette
             prix={200}
             title="Escalade"
             description="c'est bon pour le moral"
-            image="/images/escalade.jpg"
+            image="/images/grimpe.jpg"
           />
+        </div>
+        <div className="vignette-container">
           <Vignette
             prix={400}
             title="Ski"
             description="c'est bon pour le moral"
             image="/images/ski.jpg"
           />
+
           <Vignette
             prix={800}
             title="Snowkite"
