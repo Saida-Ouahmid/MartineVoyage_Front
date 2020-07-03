@@ -30,7 +30,11 @@ class App extends Component {
 
           <Switch>
             <Route path="/je-pars-quand" exact component={CategorieProduit} />
-            <Route path="/je-pars-ou" exact component={CategorieProduit} />
+            <Route
+              path="/je-pars-ou/:category"
+              exact
+              component={CategorieProduit}
+            />
             <Route exact path="/" component={Home} />
             <Route exact path="/Product" component={Product} />
             <Route path="/Inscription" exact component={Inscription} />

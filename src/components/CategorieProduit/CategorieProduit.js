@@ -10,13 +10,60 @@ import "./style.scss";
 class CategorieProduit extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      category: [],
+    };
   }
+  componentDidMount() {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+    });
+    const options = {
+      method: "GET",
+
+      headers: headers,
+    };
+    fetch(
+      "http://localhost:4000/products/category/" +
+        this.props.match.params.category,
+      options
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then(
+        (data) => {
+          this.setState({ category: data });
+        },
+
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+  display = () => {
+    let contentDisplay = [];
+    this.state.category.forEach((element, index) => {
+      contentDisplay.push(
+        <Vignette
+          key={index}
+          image={element.picture[0]} /// il faueut ajouter le nom de la propriete
+          prix={element.price}
+          title={element.travel_name}
+          description={element.short_description}
+        />
+      );
+    });
+
+    return contentDisplay;
+  };
   render() {
     return (
       <div className="wrapper">
         <Searchbar />
         <div className="categorieProduitTitre">
-          <h1>VACANCES EN MER OU EN MONTAGNE</h1>
+          <h1>Vacances à la {this.props.match.params.category}</h1>
           <p>
             Réservez en toute confiance - nous proposons des conditions de
             <br />
@@ -37,44 +84,7 @@ class CategorieProduit extends Component {
             disponibles (yog, vtt, rando...).
           </p>
         </div>
-        <div className="vignette-container">
-          <Vignette
-            prix={800}
-            title="Kitsurf"
-            description="c'est bon pour le moral"
-            image="/images/kitesurf.jpg"
-          />
-          <Vignette
-            prix={600}
-            title="Surf"
-            description="c'est bon pour le moral"
-            image="/images/surf.jpg"
-          />
-          <Vignette
-            prix={400}
-            title="Plongée"
-            description="c'est bon pour le moral"
-            image="/images/produitplongee.jpg"
-          />
-          <Vignette
-            prix={200}
-            title="Escalade"
-            description="c'est bon pour le moral"
-            image="/images/escalade.jpg"
-          />
-          <Vignette
-            prix={400}
-            title="Ski"
-            description="c'est bon pour le moral"
-            image="/images/ski.jpg"
-          />
-          <Vignette
-            prix={800}
-            title="Snowkite"
-            description="c'est bon pour le moral"
-            image="/images/produitsnowkit.jpg"
-          />
-        </div>
+        <div className="vignette-container">{this.display()}</div>
 
         <div className="categorieProduitTexteDuBas">
           <p>

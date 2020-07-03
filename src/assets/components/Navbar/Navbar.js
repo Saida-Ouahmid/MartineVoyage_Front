@@ -54,8 +54,12 @@ class App extends Component {
                 <a>Je pars ou?</a>
               </Link>
               <ul className="dropDownChild">
-                <a> En mer</a>
-                <a>En montagne</a>
+                <Link to="/Je-pars-ou/mer">
+                  <a> En mer</a>
+                </Link>
+                <Link to="/Je-pars-ou/montagne">
+                  <a>En montagne</a>
+                </Link>
               </ul>
             </li>
           </ul>

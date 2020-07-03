@@ -12,58 +12,59 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      travel: [
-        {
-          title: "Séjour de plongée",
-          prix: 400,
-          image: "/images/diving.jpg",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        },
-        {
-          title: "Séjour de Kitesurf",
-          prix: 600,
-          image: "/images/kitesurf2.jpg",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        },
-        {
-          title: "Séjour d'escalade",
-          prix: 350,
-          image: "/images/grimpe.jpg",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        },
-        {
-          title: "Séjour Snowboard",
-          prix: 900,
-          image: "/images/snowboard.jpg",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        },
-      ],
+      travel: [],
     };
   }
+
+  componentDidMount() {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+      "X-Requested-With": "XMLHttpRequest",
+    });
+
+    const options = {
+      method: "GET",
+
+      headers: headers,
+    };
+    fetch("http://localhost:4000/products/new-travels", options)
+      .then((response) => {
+        return response.json();
+      })
+      .then(
+        (data) => {
+          this.setState({ travel: data });
+        },
+
+        (error) => {
+          console.log(error);
+        }
+      );
+  }
+
   display = () => {
     let contentDisplay = [];
     this.state.travel.forEach((element, index) => {
       contentDisplay.push(
         <Vignette
           key={index}
-          image={element.image}
-          prix={element.prix}
-          title={element.title}
-          description={element.description}
+          image={element.picture[0]} /// il faueut ajouter le nom de la propriete
+          prix={element.price}
+          title={element.travel_name}
+          description={element.short_description}
         />
       );
     });
+
     return contentDisplay;
   };
+
   render() {
     return (
       <div className="home-page">
         <Searchbar />
         <h2>Les nouveaux voyages de Martine</h2>
+
         <div className="display">{this.display()}</div>
         <p className="home-paragraphe">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
