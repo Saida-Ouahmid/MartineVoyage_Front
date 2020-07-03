@@ -75,8 +75,8 @@ class CategorieProduit extends Component {
             Découvrez nos stages et séjours surf dans nos différentes
             destinations :
             <br />
-            France, Portugal, Maroc, Bali, Costa Rica... Quelque soit la durée{" "}
-            de vos vacances , adoptez le rythme de la vie dans votre camp,{" "}
+            France, Portugal, Maroc, Bali, Costa Rica... Quelque soit la durée
+            de vos vacances , adoptez le rythme de la vie dans votre camp,
             <br />
             découvrez les plus beaux spots des environs et profitez de conseils
             de moniteurs expérimentés. Formules 2 à 14 jours en <br />

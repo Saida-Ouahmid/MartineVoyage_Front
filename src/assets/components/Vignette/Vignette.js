@@ -37,12 +37,12 @@ class Vignette extends Component {
           A partir de <br></br> {this.props.prix} €
         </p>
         <div className="texte-vignette">
-          <h2>{this.props.title}</h2>
+          <h3> {this.props.title}</h3>
           <p>{this.props.description}</p>
         </div>
 
         <div>
-          <Link to="/Product">
+          <Link to="/Product/:name">
             <button
               /*onClick={this.click}*/
               onmouseover=""
