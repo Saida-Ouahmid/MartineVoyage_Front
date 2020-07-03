@@ -24,6 +24,8 @@ class App extends Component {
                 <i class="fas fa-cart-arrow-down"></i>
               </a>
             </li>
+
+            
             <li className="dropDown">
               <Link to="/Inscription">
                 <a>
@@ -31,6 +33,17 @@ class App extends Component {
                 </a>
               </Link>
             </li>
+
+
+            <li className="dropDown">
+              <Link to="/Connexion">
+                <a>
+                  <i class="far fa-user"></i>
+                </a>
+              </Link>
+            </li>
+
+
             <li className="dropDown">
               <a>inspirez-moi</a>
             </li>

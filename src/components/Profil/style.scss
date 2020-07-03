@@ -1,5 +1,5 @@
 /*les identifiants*/
-.wrapper {
+.blocProfil {
   .identifiants {
     width: 550px;
     padding-left: 30px;
@@ -16,7 +16,6 @@
   #conditions {
     width: 15px;
     height: 15px;
-    font-size: smaller;
   }
   /*le boutton*/
   .identifiants button {
@@ -35,12 +34,8 @@
   h3 {
     text-align: center;
     padding: 10px;
-    color: rgb(130, 193, 214);
   }
-  .asterisque {
-    font-size: smaller;
-  }
-  .CGU {
-    font-size: smaller;
+  .para {
+    text-align: center;
   }
 }
