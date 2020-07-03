@@ -27,40 +27,139 @@ class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      title: "Titre",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      prix: 12,
-      prix_base: 12,
-      image: "/images/produit1.jpg",
-      categorie: "mer",
-      saison: "été",
-      nombre_personne: 1,
-      depart: "",
-      arrivee: "",
+      travel: [],
+      details: {},
+      travellers_number: 1,
+      travel_date: "",
     };
   }
 
-  click = () => {
-    alert("Ajout panier");
-  };
+  componentDidMount() {
+    this.getProductInfo();
+    this.getLastTrip();
+  }
+  /*  click = () => {
+    {
+      this.addNewOrder;
+    }
+    <p>{this.state.message}</p>;
+  };*/
   add = (e) => {
-    if (this.state.nombre_personne <= 10) {
+    if (this.state.travellers_number <= 10) {
       this.setState({
-        prix: this.state.prix_base * parseInt(e.target.value),
-        nombre_personne: parseInt(e.target.value),
+        total_price: this.state.details.price * parseInt(e.target.value),
+        travellers_number: parseInt(e.target.value),
       });
     }
   };
-  depart = (e) => {
+  /*depart = (e) => {
     this.setState({
       depart: e.target.value,
     });
-  };
-  arrivee = (e) => {
+  };*/
+  date = (e) => {
     this.setState({
-      arrivee: e.target.value,
+      travel_date: e.target.value,
     });
+  };
+  addNewOrder = (e) => {
+    e.preventDefault();
+    const data = {
+      travel_name: this.state.travel_name,
+      travellers_number: this.state.travellers_number,
+      total_price: this.state.total_price,
+      travel_date: this.state.travel_date,
+    };
+
+    const headers = new Headers({
+      "Content-Type": "application/json",
+    });
+
+    const options = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: headers,
+    };
+
+    fetch("http://localhost:4000/products/reservation", options)
+      .then((response) => {
+        return response.json();
+      })
+      .then(
+        (responseObject) => {
+          this.setState({ message: responseObject.message });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  };
+
+  getProductInfo = () => {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+    });
+    const options = {
+      method: "GET",
+      headers: headers,
+    };
+
+    fetch(
+      "http://localhost:4000/products/" + this.props.match.params.name,
+      options
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then(
+        (data) => {
+          this.setState({ details: data, total_price: data.price });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  };
+
+  getLastTrip = () => {
+    const headers = new Headers({
+      "Content-Type": "application/json",
+    });
+    const options = {
+      method: "GET",
+      headers: headers,
+    };
+
+    fetch(
+      "http://localhost:4000/products/more/" + this.props.match.params.name,
+      options
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then(
+        (data) => {
+          this.setState({ travel: data });
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+  };
+  display = () => {
+    let contentDisplay = [];
+    this.state.travel.forEach((element, index) => {
+      contentDisplay.push(
+        <Vignette
+          key={index}
+          image={element.picture[0]}
+          prix={element.price}
+          title={element.travel_name}
+          description={element.short_description}
+        />
+      );
+    });
+    return contentDisplay;
   };
 
   render() {
@@ -71,24 +170,25 @@ class Product extends Component {
             <ImageGallery items={images} />
           </div>
           <div className="product-detail">
-            <h3 className="product-title">{this.state.title}</h3>
-            <p className="product-description">{this.state.description}</p>
+            <h3 className="product-title">{this.state.details.travel_name}</h3>
+            <p className="product-description">
+              {this.state.details.long_description}
+            </p>
             <section className="product-reservation">
               <p>Sélectionnez vos dates de séjour </p>
-              <span>Du</span>
-              <input
+              <span>Vos dates</span>
+              {/*<input
                 type="date"
                 className="product-date"
                 onChange={this.depart}
                 value={this.state.depart}
-              />
-              <span>au</span>
+              />*/}
               <input
-                type="date"
+                type="text"
                 className="product-date"
-                onChange={this.arrivee}
-                placeholder="Date d'arrivée"
-                value={this.state.arrivee}
+                onChange={this.date}
+                placeholder="Date de séjour"
+                value={this.state.travel_date}
               />
               <div className="nbr-produit">
                 <span> Nombre de personnes</span>
@@ -97,17 +197,18 @@ class Product extends Component {
                   min="1"
                   max="10"
                   onChange={this.add}
-                  value={this.state.nombre_personne}
+                  value={this.state.travellers_number}
                 />
               </div>
             </section>
-            <p className="product-price">{this.state.prix} €</p>
+            <p className="product-price">{this.state.total_price} €</p>
             <input
               type="submit"
               className="product-valid"
-              onClick={this.click}
+              onClick={this.addNewOrder}
               value="Je réserve"
             />
+            <p>{this.state.message}</p>
             <p>Une question ?</p>
             <a href="mailto=bonjourmartine@martinevoyage.com">
               <button>Contactez-nous</button>
@@ -116,10 +217,7 @@ class Product extends Component {
         </div>
         <div className="suggestion">
           <h2>Ces séjours pourraient aussi vous plaire</h2>
-          <div className="composant-vignette">
-            <Vignette image="/images/kitesurf2.jpg" />
-            <Vignette image="/images/diving.jpg" />
-          </div>
+          <div className="composant-vignette">{this.display()}</div>
           <p className="informations">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
             risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing
