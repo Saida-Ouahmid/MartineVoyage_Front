@@ -142,7 +142,7 @@ class Inscription extends Component {
               onChange={this.change}
             />
             <label for="conditions" className="CGU">
-              J'ai lu et j'accepte les CGU
+              J'ai lu et j'accepte les CGU.
             </label>
             <br />
             <p className="asterisque">
