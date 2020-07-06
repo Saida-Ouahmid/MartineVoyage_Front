@@ -9,21 +9,22 @@ class Profil extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profil: {},
-      lastname: null,
-      firstname: null,
-      email: null,
-      tel: null,
-      password: null,
-      hobbies: null,
-      order: [
-        {
-          travel_name: null,
-          travellers_number: null,
-          total_price: null,
-          travel_date: null,
-        },
-      ],
+      profil: {
+        lastname: null,
+        firstname: null,
+        email: null,
+        tel: null,
+        password: null,
+        hobbies: null,
+        order: [
+          {
+            travel_name: null,
+            travellers_number: null,
+            total_price: null,
+            travel_date: null,
+          },
+        ],
+      },
     };
   }
 
@@ -36,11 +37,19 @@ class Profil extends Component {
   getDataProfil = () => {
     const headers = new Headers({
       "Content-Type": "application/json",
+      /**on ajoute le header autorization qui a comme valeur bearer(espace)token */
+      Authorization: "bearer " + localStorage.getItem("token"),
     });
+    const data = {
+      /*on appel l'userId dans le body en le recuperant du localstorage */
+      userId: localStorage.getItem("userId"),
+    };
     const options = {
-      method: "GET",
+      method: "POST",
+      body: JSON.stringify(data),
       headers: headers,
     };
+
     fetch("http://localhost:4000/profil/dataProfil", options)
       .then((response) => {
         return response.json();
@@ -49,6 +58,7 @@ class Profil extends Component {
         (responseObject) => {
           const profilInfo = responseObject;
           this.setState({ profil: profilInfo });
+          console.log(this.state);
         },
 
         (error) => {
@@ -56,6 +66,9 @@ class Profil extends Component {
         }
       );
   };
+  componentDidMount() {
+    this.getDataProfil();
+  }
 
   editProfil = (e) => {
     e.preventDefault();
@@ -120,9 +133,6 @@ class Profil extends Component {
       );
   };
 
-  componentDidMount() {
-    this.getDataProfil();
-  }
   render() {
     return (
       <div className="blocProfil">
@@ -130,7 +140,7 @@ class Profil extends Component {
           <h3>Bienvenue sur votre compte client!</h3>
           <p className="para">
             Vous pouvez mettre à jours vos données, consulter votre historique
-            de voyage ou (dans le pire des cas) supprimer votre compte :-( .
+            de voyage ou supprimer votre compte :-( .
           </p>
           <form>
             <label htmlFor="lastname">Nom</label>
@@ -156,8 +166,8 @@ class Profil extends Component {
             <input
               type="tel"
               id="tel"
-              value={this.getDataProfil}
               onChange={this.change}
+              value={this.state.profil.tel}
             />
             <br /> <br />
             <label htmlFor="email">e-mail</label>
@@ -165,7 +175,7 @@ class Profil extends Component {
             <input
               type="email"
               id="email"
-              value={this.getDataProfil}
+              value={this.state.profil.email}
               onChange={this.change}
             />
             <br /> <br />
@@ -174,7 +184,7 @@ class Profil extends Component {
             <input
               type="password"
               id="password"
-              value={this.getDataProfil}
+              placeholder="modifier le mot de passe"
               onChange={this.change}
             />
             <br /> <br />
@@ -183,7 +193,7 @@ class Profil extends Component {
             <input
               type="text"
               id="hobbies"
-              value={this.getDataProfil}
+              value={this.state.profil.hobbies}
               onChange={this.change}
             />
             <br /> <br />

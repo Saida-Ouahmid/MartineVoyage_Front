@@ -9,10 +9,7 @@ import { Link } from "react-router-dom";
 class Connexion extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      email: null,
-      password: null,
-    };
+    this.state = { email: null, password: null };
   }
 
   change = (event) => {
@@ -42,9 +39,17 @@ class Connexion extends Component {
       .then((response) => {
         return response.json();
       })
+
       .then(
         (responseObject) => {
           this.setState({ message: responseObject.message });
+          /*stocker le token et l'userId dans le localStorage pour pouvoir les rappeler une fois la connection reussie */
+          localStorage.setItem("token", responseObject.token);
+          localStorage.setItem("userID", responseObject.userId);
+          /* */
+          this.props.history.push(
+            "/profil"
+          ); /*permet d'allez vers la page profil APRES avoir valider la connexion*/
         },
 
         (error) => {
@@ -56,7 +61,7 @@ class Connexion extends Component {
   render() {
     return (
       <div className="blocConnexion">
-        <h3>Veuillez vous connecter pour accéder à votre compte</h3>
+        <h3>Veuillez vous connecter pour accéder à votre compte.</h3>
         <form>
           <label htmlFor="email">e-Mail</label>
           <input
@@ -64,6 +69,7 @@ class Connexion extends Component {
             id="email"
             placeholder="example@hotmail.com"
             onChange={this.change}
+            value={this.state.email}
           />
           <br /> <br />
           <label htmlFor="password">Mot de passe</label>
@@ -72,10 +78,11 @@ class Connexion extends Component {
             id="password"
             placeholder="********"
             onChange={this.change}
+            value={this.state.password}
           />
           <br /> <br />
           <button type="submit" onClick={this.loginProfil}>
-            <Link to="/Profil"> Se connecter </Link>
+            Se connecter
           </button>
           <p>{this.state.message}</p>
         </form>

@@ -33,7 +33,10 @@ class Home extends Component {
       })
       .then(
         (data) => {
-          this.setState({ travel: data });
+          /*Array.isArray permet d'afficher les données sous tableau...evite bug si on pas les données */
+          if (Array.isArray(data)) {
+            this.setState({ travel: data });
+          }
         },
 
         (error) => {
