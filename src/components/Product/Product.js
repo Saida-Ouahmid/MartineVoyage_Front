@@ -72,7 +72,7 @@ class Product extends Component {
   addNewOrder = (e) => {
     e.preventDefault();
     const data = {
-      userId: localStorage.getItem("userId"),
+      userId: localStorage.getItem("userID"),
       travel_name: this.state.travel_name,
       travellers_number: this.state.travellers_number,
       total_price: this.state.total_price,
@@ -96,7 +96,11 @@ class Product extends Component {
       })
       .then(
         (responseObject) => {
-          this.setState({ message: responseObject.message });
+          if (!data.userId) {
+            this.setState({ message: "Connectez-vous d'abord" });
+          } else {
+            this.setState({ message: responseObject.message });
+          }
         },
         (err) => {
           console.log(err);
