@@ -46,10 +46,8 @@ class Connexion extends Component {
           /*stocker le token et l'userId dans le localStorage pour pouvoir les rappeler une fois la connection reussie */
           localStorage.setItem("token", responseObject.token);
           localStorage.setItem("userID", responseObject.userId);
-          /* */
-          this.props.history.push(
-            "/profil"
-          ); /*permet d'allez vers la page profil APRES avoir valider la connexion*/
+          /*permet d'allez vers la page profil APRES avoir valider la connexion (et pouvoir recuperer le localstorage aussi)*/
+          this.props.history.push("/profil");
         },
 
         (error) => {

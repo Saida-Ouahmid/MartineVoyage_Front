@@ -29,15 +29,18 @@ class Profil extends Component {
   }
 
   change = (event) => {
+    let profil = this.state.profil;
+    profil[event.target.name] = event.target.value;
     this.setState({
-      [event.target.id]: event.target.value, // identifier Id de l'input = choisir la valeur qui se trouve dans l'input
+      profil: profil,
+      // identifier name de l'input = choisir la valeur qui se trouve dans l'input
     });
   };
 
-  getDataProfil = () => {
+  postDataProfil = () => {
     const headers = new Headers({
       "Content-Type": "application/json",
-      /**on ajoute le header autorization qui a comme valeur bearer(espace)token */
+      /**on ajoute le header autorization qui a comme valeur bearer(puis espace) suivi par le token de l'user */
       Authorization: "bearer " + localStorage.getItem("token"),
     });
     const data = {
@@ -67,22 +70,19 @@ class Profil extends Component {
       );
   };
   componentDidMount() {
-    this.getDataProfil();
+    this.postDataProfil();
   }
 
   editProfil = (e) => {
     e.preventDefault();
     const data = {
-      lastname: this.state.lastname,
-      firstname: this.state.firstname,
-      email: this.state.email,
-      tel: this.state.tel,
-      password: this.state.password,
-      hobbies: this.state.hobbies,
+      userId: localStorage.getItem("userID"),
+      profil: this.state.profil,
     };
 
     const headers = new Headers({
       "Content-Type": "application/json",
+      Authorization: "bearer " + localStorage.getItem("token"),
     });
 
     const options = {
@@ -148,6 +148,7 @@ class Profil extends Component {
             <input
               type="text"
               id="lastname"
+              name="lastname"
               value={this.state.profil.lastname}
               onChange={this.change}
             />
@@ -157,6 +158,7 @@ class Profil extends Component {
             <input
               type="text"
               id="firstname"
+              name="firstname"
               value={this.state.profil.firstname}
               onChange={this.change}
             />
@@ -166,8 +168,9 @@ class Profil extends Component {
             <input
               type="tel"
               id="tel"
-              onChange={this.change}
+              name="tel"
               value={this.state.profil.tel}
+              onChange={this.change}
             />
             <br /> <br />
             <label htmlFor="email">e-mail</label>
@@ -175,6 +178,7 @@ class Profil extends Component {
             <input
               type="email"
               id="email"
+              name="email"
               value={this.state.profil.email}
               onChange={this.change}
             />
@@ -184,6 +188,7 @@ class Profil extends Component {
             <input
               type="password"
               id="password"
+              name="password"
               placeholder="modifier le mot de passe"
               onChange={this.change}
             />
@@ -193,6 +198,7 @@ class Profil extends Component {
             <input
               type="text"
               id="hobbies"
+              name="hobbies"
               value={this.state.profil.hobbies}
               onChange={this.change}
             />
