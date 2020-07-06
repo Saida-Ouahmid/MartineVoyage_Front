@@ -38,6 +38,13 @@ class Product extends Component {
     this.getProductInfo();
     this.getLastTrip();
   }
+
+  componentDidUpdate(prevprops) {
+    if (prevprops.match.params.name != this.props.match.params.name) {
+      this.getProductInfo();
+      this.getLastTrip();
+    }
+  }
   /*  click = () => {
     {
       this.addNewOrder;
@@ -65,6 +72,7 @@ class Product extends Component {
   addNewOrder = (e) => {
     e.preventDefault();
     const data = {
+      userId: localStorage.getItem("userId"),
       travel_name: this.state.travel_name,
       travellers_number: this.state.travellers_number,
       total_price: this.state.total_price,
@@ -73,6 +81,7 @@ class Product extends Component {
 
     const headers = new Headers({
       "Content-Type": "application/json",
+      Authorization: "bearer " + localStorage.getItem("token"),
     });
 
     const options = {
@@ -99,6 +108,7 @@ class Product extends Component {
     const headers = new Headers({
       "Content-Type": "application/json",
     });
+
     const options = {
       method: "GET",
       headers: headers,
