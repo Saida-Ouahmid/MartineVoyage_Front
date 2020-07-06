@@ -9,6 +9,8 @@ import Home from "../Home/Home";
 import Product from "../Product/Product";
 import CategorieProduit from "../CategorieProduit/CategorieProduit";
 import Inscription from "../Inscription/Inscription";
+import Connexion from "../Connexion/Connexion";
+import Profil from "../Profil/Profil";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../../assets/components/Navbar/Navbar";
 
@@ -32,8 +34,10 @@ class App extends Component {
             <Route path="/je-pars-quand" component={CategorieProduit} />
             <Route path="/je-pars-ou/:category" component={CategorieProduit} />
             <Route exact path="/" component={Home} />
-            <Route path={"/Product/:name"} component={Product} />
-            <Route path="/Inscription" component={Inscription} />
+            <Route exact path="/Product/:name" component={Product} />
+            <Route path="/Inscription" exact component={Inscription} />
+            <Route path="/Connexion" exact component={Connexion} />
+            <Route path="/Profil" component={Profil} />
           </Switch>
           <Footer />
         </Router>

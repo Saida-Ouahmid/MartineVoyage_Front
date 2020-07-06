@@ -9,15 +9,15 @@ class Inscription extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nom: null,
-      prenom: null,
-      age: null,
-      mail: null,
+      lastname: null,
+      firstname: null,
+      email: null,
       tel: null,
       password: null,
-      conditions: null,
+      hobbies: null,
     };
   }
+
   /*fonction pour ecrire dans nos input*/
   change = (event) => {
     this.setState({
@@ -25,69 +25,115 @@ class Inscription extends Component {
     });
   };
 
-  submit = (event) => {
+  addNewRegister = (e) => {
+    e.preventDefault();
+    const data = {
+      lastname: this.state.lastname,
+      firstname: this.state.firstname,
+      email: this.state.email,
+      tel: this.state.tel,
+      password: this.state.password,
+      hobbies: this.state.hobbies,
+    };
+
+    const headers = new Headers({
+      "Content-Type": "application/json",
+    });
+
+    const options = {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: headers,
+    };
+
+    fetch("http://localhost:4000/profil/register", options)
+      .then((response) => {
+        return response.json();
+      })
+      .then(
+        (responseObject) => {
+          this.setState({ message: responseObject.message });
+        },
+
+        (error) => {
+          console.log(error);
+        }
+      );
+  };
+
+  /*submit = (event) => {
     event.preventDefault(); //empecher le formulaire de recharger la page
     console.log(this.state); // envoyé le contenu du formulaire dans la console
-  };
+  };*/
   render() {
     return (
       <div className="wrapper">
         <div className="identifiants">
-          <h3>Créez votre compte client</h3>
-          <form onSubmit={this.submit}>
-            <label htmlFor="nom">Nom</label>
+          <h3>Création de votre compte client</h3>
+          <form /*onSubmit={this.submit}*/>
+            <label htmlFor="lastname">
+              Nom<sup>*</sup>{" "}
+            </label>
             <br />
             <input
               type="text"
-              id="nom"
+              id="lastname"
               placeholder="Nom"
               onChange={this.change}
             />
-            <br />
-            <label htmlFor="prenom">Prénom</label>
+            <br /> <br />
+            <label htmlFor="firstname">
+              Prénom <sup>*</sup>{" "}
+            </label>
             <br />
             <input
               type="text"
-              id="prenom"
+              id="firstname"
               placeholder="Prénom"
               onChange={this.change}
             />
-            <br />
-            <label htmlFor="age">Age</label>
-            <br />
-            <input
-              type="number"
-              id="age"
-              placeholder="Age"
-              onChange={this.change}
-            />
-            <br />
-            <label htmlFor="tel">Tel</label>
+            <br /> <br />
+            <label htmlFor="tel">
+              Numéro de téléphone <sup>*</sup>{" "}
+            </label>
             <br />
             <input
               type="tel"
               id="tel"
-              placeholder="Téléphone"
+              placeholder="06XXXXXXXX"
               onChange={this.change}
             />
-            <br />
-            <label htmlFor="mail">Mail</label>
+            <br /> <br />
+            <label htmlFor="email">
+              e-mail<sup>*</sup>{" "}
+            </label>
             <br />
             <input
-              type="mail"
-              id="mail"
-              placeholder="Mail"
+              type="email"
+              id="email"
+              placeholder="exemple@hotmail.com"
               onChange={this.change}
             />
-            <br />
-            <label htmlFor="password">Mot de passe</label>
+            <br /> <br />
+            <label htmlFor="password">
+              Mot de passe<sup>*</sup>{" "}
+            </label>
             <br />
             <input
               type="password"
               id="password"
-              placeholder="Mot de passe"
+              placeholder="***********"
               onChange={this.change}
             />
+            <br /> <br />
+            <label htmlFor="hobbies">Hobbies</label>
+            <br />
+            <input
+              type="text"
+              id="hobbies"
+              placeholder="Randonnée, Plongée, Ski, Surf, ... "
+              onChange={this.change}
+            />{" "}
             <br />
             <input
               type="checkbox"
@@ -95,9 +141,17 @@ class Inscription extends Component {
               id="conditions"
               onChange={this.change}
             />
-            <label for="conditions">J'ai lu les conditions</label>
+            <label for="conditions" className="CGU">
+              J'ai lu et j'accepte les CGU
+            </label>
             <br />
-            <button>Enregistrer</button>
+            <p className="asterisque">
+              Les champs marqués d'un astérisque ( * ) sont obligatoires.
+            </p>
+            <button type="submit" onClick={this.addNewRegister}>
+              Enregistrer
+            </button>
+            <p>{this.state.message}</p>
           </form>
         </div>
       </div>
