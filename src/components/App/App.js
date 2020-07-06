@@ -29,15 +29,11 @@ class App extends Component {
           <Navbar />
 
           <Switch>
-            <Route path="/je-pars-quand" exact component={CategorieProduit} />
-            <Route
-              path="/je-pars-ou/:category"
-              exact
-              component={CategorieProduit}
-            />
+            <Route path="/je-pars-quand" component={CategorieProduit} />
+            <Route path="/je-pars-ou/:category" component={CategorieProduit} />
             <Route exact path="/" component={Home} />
-            <Route exact path="/Product/:name" component={Product} />
-            <Route path="/Inscription" exact component={Inscription} />
+            <Route path={"/Product/:name"} component={Product} />
+            <Route path="/Inscription" component={Inscription} />
           </Switch>
           <Footer />
         </Router>

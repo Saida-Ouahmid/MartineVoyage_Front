@@ -1,7 +1,9 @@
 /**
  * Component - Vignette Produit
  */
-
+import getProductInfo from "../../../components/Product/Product.js";
+import getLastTrip from "../../../components/Product/Product.js";
+import Product from "../../../components/Product/Product.js";
 import React, { Component } from "react";
 
 /**
@@ -13,22 +15,15 @@ import { Link } from "react-router-dom";
 class Vignette extends Component {
   constructor(props) {
     super(props);
-    /*this.state = {
-      title: "Titre",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ",
-      prix: 12,
-      image: "/images/produit1.jpg",
-      categorie: "mer",
-      saison: "été",
-    };*/
+    this.state = {};
   }
-  /*click = () => {
-    /**
-     * Lien vers la page produit concernée
-    // * alert("Redirection page");
-  };*/
 
+  /* click = () => {
+    console.log("coucou");
+
+    this.getProductInfo();
+    this.getLastTrip();
+  };*/
   render() {
     return (
       <div className="vignette-produit">
@@ -42,10 +37,10 @@ class Vignette extends Component {
         </div>
 
         <div>
-          <Link to="/Product/:name">
+          <Link to={"/Product/" + this.props.title}>
             <button
-              /*onClick={this.click}*/
-              onmouseover=""
+              /* onClick={this.click}*/
+              onMouseOver=""
               className="bouton-vignette"
             >
               En savoir plus
