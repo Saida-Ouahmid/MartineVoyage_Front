@@ -148,7 +148,10 @@ class Profil extends Component {
         }
       );
   };
-
+  signOut = () => {
+    localStorage.clear();
+    this.props.history.push("/");
+  };
   render() {
     return (
       <div className="blocProfil">
@@ -224,6 +227,9 @@ class Profil extends Component {
             </button>
             <button type="submit" onClick={this.deleteProfil}>
               Supprimer
+            </button>
+            <button type="submit" onClick={this.signOut}>
+              Se déconnecter
             </button>
             <p>{this.state.message}</p>
           </form>

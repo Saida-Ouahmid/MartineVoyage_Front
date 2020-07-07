@@ -8,9 +8,9 @@ import Vignette from "../../assets/components/Vignette/Vignette";
  */
 import "./style.scss";
 
-const images = [
+/*const images = [
   {
-    original: "https://picsum.photos/id/1018/1000/600/",
+    original: this.state.details.picture[0].original,
     thumbnail: "https://picsum.photos/id/1018/250/150/",
   },
   {
@@ -21,28 +21,26 @@ const images = [
     original: "https://picsum.photos/id/1019/1000/600/",
     thumbnail: "https://picsum.photos/id/1019/250/150/",
   },
-];
+];*/
 
 class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
       travel: [],
-      details: {},
+      details: { picture: [] },
+
       travellers_number: 1,
-      travel_date: "",
     };
   }
 
   componentDidMount() {
     this.getProductInfo();
-    this.getLastTrip();
   }
 
   componentDidUpdate(prevprops) {
     if (prevprops.match.params.name != this.props.match.params.name) {
       this.getProductInfo();
-      this.getLastTrip();
     }
   }
   /*  click = () => {
@@ -72,7 +70,7 @@ class Product extends Component {
   addNewOrder = (e) => {
     e.preventDefault();
     const data = {
-      userId: localStorage.getItem("userId"),
+      userId: localStorage.getItem("userID"),
       travel_name: this.state.travel_name,
       travellers_number: this.state.travellers_number,
       total_price: this.state.total_price,
@@ -96,7 +94,14 @@ class Product extends Component {
       })
       .then(
         (responseObject) => {
-          this.setState({ message: responseObject.message });
+          if (!data.userId) {
+            this.setState({
+              message:
+                "Vous devez être connecté à votre compte pour réserver un séjour.",
+            });
+          } else {
+            this.setState({ message: responseObject.message });
+          }
         },
         (err) => {
           console.log(err);
@@ -123,7 +128,9 @@ class Product extends Component {
       })
       .then(
         (data) => {
-          this.setState({ details: data, total_price: data.price });
+          this.setState({ details: data, total_price: data.price }, () => {
+            this.getLastTrip();
+          });
         },
         (err) => {
           console.log(err);
@@ -141,7 +148,10 @@ class Product extends Component {
     };
 
     fetch(
-      "http://localhost:4000/products/more/" + this.props.match.params.name,
+      "http://localhost:4000/products/more/" +
+        this.props.match.params.name +
+        "/" +
+        this.state.details.category,
       options
     )
       .then((response) => {
@@ -177,7 +187,7 @@ class Product extends Component {
       <div className="product">
         <div className="product-infos">
           <div className="product-image">
-            <ImageGallery items={images} />
+            <ImageGallery items={this.state.details.picture} />
           </div>
           <div className="product-detail">
             <h3 className="product-title">{this.state.details.travel_name}</h3>
@@ -219,10 +229,6 @@ class Product extends Component {
               value="Je réserve"
             />
             <p>{this.state.message}</p>
-            <p>Une question ?</p>
-            <a href="mailto=bonjourmartine@martinevoyage.com">
-              <button>Contactez-nous</button>
-            </a>
           </div>
         </div>
         <div className="suggestion">

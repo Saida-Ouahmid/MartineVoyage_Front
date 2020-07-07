@@ -1,9 +1,6 @@
 /**
  * Component - Vignette Produit
  */
-import getProductInfo from "../../../components/Product/Product.js";
-import getLastTrip from "../../../components/Product/Product.js";
-import Product from "../../../components/Product/Product.js";
 import React, { Component } from "react";
 
 /**
@@ -18,12 +15,6 @@ class Vignette extends Component {
     this.state = {};
   }
 
-  /* click = () => {
-    console.log("coucou");
-
-    this.getProductInfo();
-    this.getLastTrip();
-  };*/
   render() {
     return (
       <div className="vignette-produit">
@@ -38,11 +29,7 @@ class Vignette extends Component {
 
         <div>
           <Link to={"/Product/" + this.props.title}>
-            <button
-              /* onClick={this.click}*/
-              onMouseOver=""
-              className="bouton-vignette"
-            >
+            <button onMouseOver="" className="bouton-vignette">
               En savoir plus
             </button>
           </Link>
