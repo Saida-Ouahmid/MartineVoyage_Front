@@ -4,7 +4,7 @@
     width: 550px;
     padding-left: 30px;
     margin: auto;
-    background-color: rgba(200, 200, 200, 0.3);
+    background-color: #f2f2f2;
   }
 
   /*les input*/
@@ -37,5 +37,27 @@
   }
   .para {
     text-align: center;
+  }
+
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: lightblue;
+    color: white;
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  tr:hover {
+    background-color: #ddd;
+  }
+
+  td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  .tableau {
+    padding-left: 340px;
   }
 }
