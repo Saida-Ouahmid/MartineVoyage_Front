@@ -11,6 +11,7 @@ import CategorieProduit from "../CategorieProduit/CategorieProduit";
 import Inscription from "../Inscription/Inscription";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../../assets/components/Navbar/Navbar";
+import FilesUploadComponent from "../FilesUploadComponent/FilesUploadComponent";
 
 /* Style import*/
 import "./App.scss";
@@ -29,7 +30,11 @@ class App extends Component {
           <Navbar />
 
           <Switch>
-            <Route path="/je-pars-quand" exact component={CategorieProduit} />
+            <Route
+              path="/je-pars-quand/:category"
+              exact
+              component={CategorieProduit}
+            />
             <Route
               path="/je-pars-ou/:category"
               exact
@@ -38,6 +43,11 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/Product/:name" component={Product} />
             <Route path="/Inscription" exact component={Inscription} />
+            <Route
+              path="/FilesUploadComponent"
+              exact
+              component={FilesUploadComponent}
+            />
           </Switch>
           <Footer />
         </Router>

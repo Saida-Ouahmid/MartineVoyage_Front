@@ -25,6 +25,11 @@ class App extends Component {
               </a>
             </li>
             <li className="dropDown">
+              <Link to="/FilesUploadComponent">
+                <a>admin</a>
+              </Link>
+            </li>
+            <li className="dropDown">
               <Link to="/Inscription">
                 <a>
                   <i class="fas fa-sign-in-alt"></i>
@@ -40,10 +45,10 @@ class App extends Component {
                 <a>Je pars quand?</a>
               </Link>
               <ul className="dropDownChild">
-                <Link to="/je-pars-quand">
+                <Link to="/je-pars-quand/hiver">
                   <a> En hiver</a>
                 </Link>
-                <Link to="/je-pars-quand">
+                <Link to="/je-pars-quand/ete">
                   <a>En été</a>
                 </Link>
               </ul>
