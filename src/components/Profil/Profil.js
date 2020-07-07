@@ -157,6 +157,10 @@ class Profil extends Component {
       .then(
         (responseObject) => {
           this.setState({ message: responseObject.message });
+          alert(
+            "La suppression de votre compte a bien été prise en compte. Merci."
+          );
+          this.props.history.push("/Home");
         },
 
         (error) => {
@@ -250,7 +254,7 @@ class Profil extends Component {
             <p>{this.state.message}</p>
           </form>
         </div>
-        {/*<div className="historique">{this.dataHistorique()}</div>*/}
+        {/*<div className="historique">{this.dataHistorique()}</div>*/}z
       </div>
     );
   }
