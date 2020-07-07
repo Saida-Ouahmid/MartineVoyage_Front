@@ -8,7 +8,7 @@ import Vignette from "../../assets/components/Vignette/Vignette";
  */
 import "./style.scss";
 
-/*const images = [
+const images = [
   {
     original: this.state.details.picture[0].original,
     thumbnail: "https://picsum.photos/id/1018/250/150/",
@@ -21,7 +21,7 @@ import "./style.scss";
     original: "https://picsum.photos/id/1019/1000/600/",
     thumbnail: "https://picsum.photos/id/1019/250/150/",
   },
-];*/
+];
 
 class Product extends Component {
   constructor(props) {
@@ -197,7 +197,7 @@ class Product extends Component {
       <div className="product">
         <div className="product-infos">
           <div className="product-image">
-            {/* <ImageGallery items={this.photo()} />*/}
+            <ImageGallery items={images} />
           </div>
           <div className="product-detail">
             <h3 className="product-title">{this.state.details.travel_name}</h3>
