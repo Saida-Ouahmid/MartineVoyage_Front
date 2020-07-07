@@ -13,6 +13,7 @@ import Connexion from "../Connexion/Connexion";
 import Profil from "../Profil/Profil";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../../assets/components/Navbar/Navbar";
+import ScrollToTop from "../../assets/components/Scroll/Scroll";
 
 /* Style import*/
 import "./App.scss";
@@ -28,18 +29,23 @@ class App extends Component {
     return (
       <div className="app">
         <Router>
-          <Navbar />
+          <ScrollToTop>
+            <Navbar />
 
-          <Switch>
-            <Route path="/je-pars-quand" component={CategorieProduit} />
-            <Route path="/je-pars-ou/:category" component={CategorieProduit} />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/Product/:name" component={Product} />
-            <Route path="/Inscription" exact component={Inscription} />
-            <Route path="/Connexion" exact component={Connexion} />
-            <Route path="/Profil" component={Profil} />
-          </Switch>
-          <Footer />
+            <Switch>
+              <Route path="/je-pars-quand" component={CategorieProduit} />
+              <Route
+                path="/je-pars-ou/:category"
+                component={CategorieProduit}
+              />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/Product/:name" component={Product} />
+              <Route path="/Inscription" exact component={Inscription} />
+              <Route path="/Connexion" exact component={Connexion} />
+              <Route path="/Profil" component={Profil} />
+            </Switch>
+            <Footer />
+          </ScrollToTop>
         </Router>
       </div>
     );

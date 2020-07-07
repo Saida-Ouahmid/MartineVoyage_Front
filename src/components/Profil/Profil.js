@@ -134,6 +134,7 @@ class Profil extends Component {
   };
   signOut = () => {
     localStorage.clear();
+    this.props.history.push("/");
   };
   render() {
     return (
