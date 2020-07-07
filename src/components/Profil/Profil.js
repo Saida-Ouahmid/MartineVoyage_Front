@@ -40,7 +40,7 @@ class Profil extends Component {
   postDataProfil = () => {
     const headers = new Headers({
       "Content-Type": "application/json",
-      /**on ajoute le header autorization qui a comme valeur bearer(puis espace) suivi par le token de l'user */
+      /**on ajoute  pour l'AUTHENTIFICATION le header autorization qui a comme valeur bearer(puis espace) suivi par le token de l'user */
       Authorization: "bearer " + localStorage.getItem("token"),
     });
     const data = {
@@ -76,12 +76,16 @@ class Profil extends Component {
   editProfil = (e) => {
     e.preventDefault();
     const data = {
-      userId: localStorage.getItem("userID"),
+      userId: localStorage.getItem(
+        "userID"
+      ) /*on get l'Id qu'on a stocké durant la connexion*/,
+      /*userID avec le ID en majuscule car c'est comme ca qu'on l'a mis dans le local storage (/connexion) */
       profil: this.state.profil,
     };
 
     const headers = new Headers({
       "Content-Type": "application/json",
+      /**on ajoute pour l'AUTHENTIFICATION le header autorization qui a comme valeur bearer(puis espace) suivi par le token de l'user */
       Authorization: "bearer " + localStorage.getItem("token"),
     });
 
@@ -107,14 +111,26 @@ class Profil extends Component {
   };
 
   deleteProfil = (e) => {
+    window.confirm(
+      "Etes-vous sur de vouloir supprimer votre compte? Cette action est irréversible."
+    );
     e.preventDefault();
+    const data = {
+      userId: localStorage.getItem(
+        "userID"
+      ) /*on get l'Id qu'on a stocké durant la connexion*/,
+      /*userID avec le ID en majuscule car c'est comme ca qu'on l'a mis dans le local storage (/connexion) */
+      profil: this.state.profil,
+    };
 
     const headers = new Headers({
       "Content-Type": "application/json",
+      Authorization: "bearer " + localStorage.getItem("token"),
     });
 
     const options = {
       method: "DELETE",
+      body: JSON.stringify(data),
       headers: headers,
     };
 
@@ -211,6 +227,53 @@ class Profil extends Component {
             </button>
             <p>{this.state.message}</p>
           </form>
+        </div>
+        <div className="tableau">
+          <table>
+            <tr>
+              <th scope="row">HISTORIQUE DE VOS VOYAGES</th>
+            </tr>
+            <tr>
+              <td colSpan="2">Formule choisie</td>
+              <td
+                type="text"
+                id="travel_name"
+                name="travel_name"
+                // value={this.state.profil.order.travel_name}
+                onChange={this.change}
+              ></td>
+            </tr>
+            <tr>
+              <td colSpan="2">Nombre de voyageurs</td>
+              <td
+                type="text"
+                id="travellers_number"
+                name="travellers_number"
+                // value={this.state.profil.order.travellers_number}
+                onChange={this.change}
+              ></td>
+            </tr>
+            <tr>
+              <td colSpan="2">Prix total</td>
+              <td
+                type="text"
+                id="total_price"
+                name="total_price"
+                //  value={this.state.profil.order.total_price}
+                onChange={this.change}
+              ></td>
+            </tr>
+            <tr>
+              <td colSpan="2">Date</td>
+              <td
+                type="text"
+                id="travel_date"
+                name="travel_date"
+                //   value={this.state.profil.order.travel_date}
+                onChange={this.change}
+              ></td>
+            </tr>
+          </table>
         </div>
       </div>
     );
