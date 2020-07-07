@@ -8,9 +8,9 @@ import Vignette from "../../assets/components/Vignette/Vignette";
  */
 import "./style.scss";
 
-const images = [
+/*const images = [
   {
-    original: "https://picsum.photos/id/1018/1000/600/",
+    original: this.state.details.picture[0].original,
     thumbnail: "https://picsum.photos/id/1018/250/150/",
   },
   {
@@ -21,22 +21,27 @@ const images = [
     original: "https://picsum.photos/id/1019/1000/600/",
     thumbnail: "https://picsum.photos/id/1019/250/150/",
   },
-];
+];*/
 
 class Product extends Component {
   constructor(props) {
     super(props);
     this.state = {
       travel: [],
-      details: {},
+      details: { picture: [] },
+
       travellers_number: 1,
-      travel_date: "",
     };
   }
 
   componentDidMount() {
     this.getProductInfo();
-    this.getLastTrip();
+  }
+
+  componentDidUpdate(prevprops) {
+    if (prevprops.match.params.name != this.props.match.params.name) {
+      this.getProductInfo();
+    }
   }
   /*  click = () => {
     {
@@ -65,7 +70,8 @@ class Product extends Component {
   addNewOrder = (e) => {
     e.preventDefault();
     const data = {
-      travel_name: this.state.travel_name,
+      userId: localStorage.getItem("userID"),
+      travel_name: this.state.details.travel_name,
       travellers_number: this.state.travellers_number,
       total_price: this.state.total_price,
       travel_date: this.state.travel_date,
@@ -73,6 +79,7 @@ class Product extends Component {
 
     const headers = new Headers({
       "Content-Type": "application/json",
+      Authorization: "bearer " + localStorage.getItem("token"),
     });
 
     const options = {
@@ -87,7 +94,14 @@ class Product extends Component {
       })
       .then(
         (responseObject) => {
-          this.setState({ message: responseObject.message });
+          if (!data.userId) {
+            this.setState({
+              message:
+                "Vous devez être connecté à votre compte pour réserver un séjour.",
+            });
+          } else {
+            this.setState({ message: responseObject.message });
+          }
         },
         (err) => {
           console.log(err);
@@ -99,6 +113,7 @@ class Product extends Component {
     const headers = new Headers({
       "Content-Type": "application/json",
     });
+
     const options = {
       method: "GET",
       headers: headers,
@@ -113,7 +128,9 @@ class Product extends Component {
       })
       .then(
         (data) => {
-          this.setState({ details: data, total_price: data.price });
+          this.setState({ details: data, total_price: data.price }, () => {
+            this.getLastTrip();
+          });
         },
         (err) => {
           console.log(err);
@@ -131,7 +148,10 @@ class Product extends Component {
     };
 
     fetch(
-      "http://localhost:4000/products/more/" + this.props.match.params.name,
+      "http://localhost:4000/products/more/" +
+        this.props.match.params.name +
+        "/" +
+        this.state.details.category,
       options
     )
       .then((response) => {
@@ -162,12 +182,22 @@ class Product extends Component {
     return contentDisplay;
   };
 
+  /*  photo = () => {
+    let picturePath = [];
+    this.state.details.picture.forEach((element, index) => {
+      this.state.details.picture.map((original, thumbnail) => {
+        picturePath = "http://localhost:4000/" + original;
+      });
+    });
+
+    return picturePath;
+  };*/
   render() {
     return (
       <div className="product">
         <div className="product-infos">
           <div className="product-image">
-            <ImageGallery items={images} />
+            {/* <ImageGallery items={this.photo()} />*/}
           </div>
           <div className="product-detail">
             <h3 className="product-title">{this.state.details.travel_name}</h3>
@@ -177,12 +207,7 @@ class Product extends Component {
             <section className="product-reservation">
               <p>Sélectionnez vos dates de séjour </p>
               <span>Vos dates</span>
-              {/*<input
-                type="date"
-                className="product-date"
-                onChange={this.depart}
-                value={this.state.depart}
-              />*/}
+
               <input
                 type="text"
                 className="product-date"
@@ -209,10 +234,6 @@ class Product extends Component {
               value="Je réserve"
             />
             <p>{this.state.message}</p>
-            <p>Une question ?</p>
-            <a href="mailto=bonjourmartine@martinevoyage.com">
-              <button>Contactez-nous</button>
-            </a>
           </div>
         </div>
         <div className="suggestion">

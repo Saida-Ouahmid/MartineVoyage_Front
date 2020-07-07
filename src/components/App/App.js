@@ -9,9 +9,12 @@ import Home from "../Home/Home";
 import Product from "../Product/Product";
 import CategorieProduit from "../CategorieProduit/CategorieProduit";
 import Inscription from "../Inscription/Inscription";
+import Connexion from "../Connexion/Connexion";
+import Profil from "../Profil/Profil";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../../assets/components/Navbar/Navbar";
 import FilesUploadComponent from "../FilesUploadComponent/FilesUploadComponent";
+import ScrollToTop from "../../assets/components/Scroll/Scroll";
 
 /* Style import*/
 import "./App.scss";
@@ -27,29 +30,33 @@ class App extends Component {
     return (
       <div className="app">
         <Router>
-          <Navbar />
+          <ScrollToTop>
+            <Navbar />
 
-          <Switch>
-            <Route
-              path="/je-pars-quand/:category"
-              exact
-              component={CategorieProduit}
-            />
-            <Route
-              path="/je-pars-ou/:category"
-              exact
-              component={CategorieProduit}
-            />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/Product/:name" component={Product} />
-            <Route path="/Inscription" exact component={Inscription} />
-            <Route
-              path="/FilesUploadComponent"
-              exact
-              component={FilesUploadComponent}
-            />
-          </Switch>
-          <Footer />
+            <Switch>
+              <Route
+                path="/je-pars-quand/:category"
+                exact
+                component={CategorieProduit}
+              />
+              <Route
+                path="/je-pars-ou/:category"
+                exact
+                component={CategorieProduit}
+              />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/Product/:name" component={Product} />
+              <Route path="/Inscription" exact component={Inscription} />
+              <Route path="/Connexion" exact component={Connexion} />
+              <Route path="/Profil" component={Profil} />
+              <Route
+                path="/FilesUploadComponent"
+                exact
+                component={FilesUploadComponent}
+              />
+            </Switch>
+            <Footer />
+          </ScrollToTop>
         </Router>
       </div>
     );
