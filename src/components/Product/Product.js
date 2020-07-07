@@ -71,7 +71,7 @@ class Product extends Component {
     e.preventDefault();
     const data = {
       userId: localStorage.getItem("userID"),
-      travel_name: this.state.travel_name,
+      travel_name: this.state.details.travel_name,
       travellers_number: this.state.travellers_number,
       total_price: this.state.total_price,
       travel_date: this.state.travel_date,

@@ -245,9 +245,11 @@ class Profil extends Component {
                 type="text"
                 id="travel_name"
                 name="travel_name"
-                // value={this.state.profil.order.travel_name}
+                value={this.state.profil.order.travel_name}
                 onChange={this.change}
-              ></td>
+              >
+                {this.state.profil.order[0].travel_name}
+              </td>
             </tr>
             <tr>
               <td colSpan="2">Nombre de voyageurs</td>
@@ -255,9 +257,11 @@ class Profil extends Component {
                 type="text"
                 id="travellers_number"
                 name="travellers_number"
-                // value={this.state.profil.order.travellers_number}
+                value={this.state.profil.order.travellers_number}
                 onChange={this.change}
-              ></td>
+              >
+                {this.state.profil.order[0].travellers_number}
+              </td>
             </tr>
             <tr>
               <td colSpan="2">Prix total</td>
@@ -265,9 +269,11 @@ class Profil extends Component {
                 type="text"
                 id="total_price"
                 name="total_price"
-                //  value={this.state.profil.order.total_price}
+                value={this.state.profil.order.total_price}
                 onChange={this.change}
-              ></td>
+              >
+                {this.state.profil.order[0].total_price}
+              </td>
             </tr>
             <tr>
               <td colSpan="2">Date</td>
@@ -275,9 +281,11 @@ class Profil extends Component {
                 type="text"
                 id="travel_date"
                 name="travel_date"
-                //   value={this.state.profil.order.travel_date}
+                value={this.state.profil.order.travel_date}
                 onChange={this.change}
-              ></td>
+              >
+                {this.state.profil.order[0].travel_date}
+              </td>
             </tr>
           </table>
         </div>
