@@ -51,7 +51,7 @@ class Home extends Component {
       contentDisplay.push(
         <Vignette
           key={index}
-          image={element.picture[0]} /// il faueut ajouter le nom de la propriete
+          image={element.picture[0].original} /// il faueut ajouter le nom de la propriete
           prix={element.price}
           title={element.travel_name}
           description={element.short_description}

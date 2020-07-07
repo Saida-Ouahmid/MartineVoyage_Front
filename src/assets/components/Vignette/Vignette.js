@@ -18,7 +18,13 @@ class Vignette extends Component {
   render() {
     return (
       <div className="vignette-produit">
-        <img src={this.props.image} className="img-vignette" alt="KiteSurf" />
+        <img
+          src={
+            "http://localhost:4000/" + this.props.image.replace("public/", "")
+          }
+          className="img-vignette"
+          alt="KiteSurf"
+        />
         <p className="price-tag">
           A partir de <br></br> {this.props.prix} €
         </p>
