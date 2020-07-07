@@ -26,9 +26,6 @@ class Inscription extends Component {
   };
 
   addNewRegister = (e) => {
-    alert(
-      "Votre inscription a bien été prise en compte. Un email de confirmation vous a été envoyé. Merci"
-    );
     e.preventDefault();
     const data = {
       lastname: this.state.lastname,
@@ -56,7 +53,6 @@ class Inscription extends Component {
       .then(
         (responseObject) => {
           this.setState({ message: responseObject.message });
-          this.props.history.push("/Home");
         },
 
         (error) => {

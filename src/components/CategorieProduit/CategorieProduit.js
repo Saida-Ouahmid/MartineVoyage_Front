@@ -6,6 +6,7 @@ import Footer from "../../assets/components/Footer/Footer.js";
 
 /*style import*/
 import "./style.scss";
+import { getNodeText } from "@testing-library/react";
 
 class CategorieProduit extends Component {
   constructor(props) {
@@ -14,7 +15,18 @@ class CategorieProduit extends Component {
       category: [],
     };
   }
+
   componentDidMount() {
+    this.getProductCategorie();
+  }
+  // avec compenentdidmount il recharger pas la page des categorie
+  //il faut faire appel a la componentdidupdate
+  componentDidUpdate(prevprops) {
+    if (prevprops.match.params.category != this.props.match.params.category) {
+      this.getProductCategorie();
+    }
+  } // if match.params.category(ancien) est different du lien demandé donc affiché le lien demandé
+  getProductCategorie = async () => {
     const headers = new Headers({
       "Content-Type": "application/json",
       "X-Requested-With": "XMLHttpRequest",
@@ -24,24 +36,20 @@ class CategorieProduit extends Component {
 
       headers: headers,
     };
-    fetch(
-      "http://localhost:4000/products/category/" +
-        this.props.match.params.category,
-      options
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then(
-        (data) => {
-          this.setState({ category: data });
-        },
+    try {
+      let url =
+        "http://localhost:4000/products/category/" +
+        this.props.match.params.category;
+      let response = await fetch(url, options);
 
-        (error) => {
-          console.log(error);
-        }
-      );
-  }
+      const data = await response.json();
+
+      this.setState({ category: data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   display = () => {
     let contentDisplay = [];
     this.state.category.forEach((element, index) => {
@@ -58,6 +66,7 @@ class CategorieProduit extends Component {
 
     return contentDisplay;
   };
+
   render() {
     return (
       <div className="wrapper">

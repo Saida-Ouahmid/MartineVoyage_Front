@@ -144,6 +144,10 @@ class Profil extends Component {
       .then(
         (responseObject) => {
           this.setState({ message: responseObject.message });
+          alert(
+            "La suppression de votre compte a bien été prise en compte. Merci."
+          );
+          this.props.history.push("/Home");
         },
 
         (error) => {

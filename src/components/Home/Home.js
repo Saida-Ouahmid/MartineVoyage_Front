@@ -16,7 +16,7 @@ class Home extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     const headers = new Headers({
       "Content-Type": "application/json",
       "X-Requested-With": "XMLHttpRequest",
@@ -27,22 +27,18 @@ class Home extends Component {
 
       headers: headers,
     };
-    fetch("http://localhost:4000/products/new-travels", options)
-      .then((response) => {
-        return response.json();
-      })
-      .then(
-        (data) => {
-          /*Array.isArray permet d'afficher les données sous tableau...evite bug si on pas les données */
-          if (Array.isArray(data)) {
-            this.setState({ travel: data });
-          }
-        },
-
-        (error) => {
-          console.log(error);
-        }
+    try {
+      const response = await fetch(
+        "http://localhost:4000/products/new-travels",
+        options
       );
+
+      const data = await response.json();
+
+      await this.setState({ travel: data });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   display = () => {
