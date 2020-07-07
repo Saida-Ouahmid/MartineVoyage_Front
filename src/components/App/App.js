@@ -13,6 +13,7 @@ import Connexion from "../Connexion/Connexion";
 import Profil from "../Profil/Profil";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "../../assets/components/Navbar/Navbar";
+import FilesUploadComponent from "../FilesUploadComponent/FilesUploadComponent";
 import ScrollToTop from "../../assets/components/Scroll/Scroll";
 
 /* Style import*/
@@ -33,9 +34,14 @@ class App extends Component {
             <Navbar />
 
             <Switch>
-              <Route path="/je-pars-quand" component={CategorieProduit} />
+              <Route
+                path="/je-pars-quand/:category"
+                exact
+                component={CategorieProduit}
+              />
               <Route
                 path="/je-pars-ou/:category"
+                exact
                 component={CategorieProduit}
               />
               <Route exact path="/" component={Home} />
@@ -43,6 +49,11 @@ class App extends Component {
               <Route path="/Inscription" exact component={Inscription} />
               <Route path="/Connexion" exact component={Connexion} />
               <Route path="/Profil" component={Profil} />
+              <Route
+                path="/FilesUploadComponent"
+                exact
+                component={FilesUploadComponent}
+              />
             </Switch>
             <Footer />
           </ScrollToTop>

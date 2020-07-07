@@ -71,7 +71,7 @@ class Product extends Component {
     e.preventDefault();
     const data = {
       userId: localStorage.getItem("userID"),
-      travel_name: this.state.travel_name,
+      travel_name: this.state.details.travel_name,
       travellers_number: this.state.travellers_number,
       total_price: this.state.total_price,
       travel_date: this.state.travel_date,
@@ -172,7 +172,7 @@ class Product extends Component {
       contentDisplay.push(
         <Vignette
           key={index}
-          image={element.picture[0]}
+          image={element.picture[0].original}
           prix={element.price}
           title={element.travel_name}
           description={element.short_description}
@@ -182,12 +182,22 @@ class Product extends Component {
     return contentDisplay;
   };
 
+  /*  photo = () => {
+    let picturePath = [];
+    this.state.details.picture.forEach((element, index) => {
+      this.state.details.picture.map((original, thumbnail) => {
+        picturePath = "http://localhost:4000/" + original;
+      });
+    });
+
+    return picturePath;
+  };*/
   render() {
     return (
       <div className="product">
         <div className="product-infos">
           <div className="product-image">
-            <ImageGallery items={this.state.details.picture} />
+            {/* <ImageGallery items={this.photo()} />*/}
           </div>
           <div className="product-detail">
             <h3 className="product-title">{this.state.details.travel_name}</h3>
@@ -197,12 +207,7 @@ class Product extends Component {
             <section className="product-reservation">
               <p>Sélectionnez vos dates de séjour </p>
               <span>Vos dates</span>
-              {/*<input
-                type="date"
-                className="product-date"
-                onChange={this.depart}
-                value={this.state.depart}
-              />*/}
+
               <input
                 type="text"
                 className="product-date"

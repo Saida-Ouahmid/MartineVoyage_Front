@@ -5,33 +5,19 @@ import Historique from "../Historique/Historique";
 
 /*style import*/
 import "./style.scss";
+import { createPortal } from "react-dom";
 
 class Profil extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      profil: {
-        lastname: null,
-        firstname: null,
-        email: null,
-        tel: null,
-        password: null,
-        hobbies: null,
-        order: [
-          {
-            travel_name: null,
-            travellers_number: null,
-            total_price: null,
-            travel_date: null,
-          },
-        ],
-      },
+      profil: { order: [] },
     };
   }
 
   dataHistorique = () => {
     let contentDataHistorique = [];
-    this.state.profil.forEach((element, index) => {
+    this.state.profil.order.forEach((element, index) => {
       contentDataHistorique.push(
         <Historique
           key={index}
@@ -42,6 +28,7 @@ class Profil extends Component {
         />
       );
     });
+    return contentDataHistorique;
   };
 
   change = (event) => {
@@ -76,7 +63,7 @@ class Profil extends Component {
       .then(
         (responseObject) => {
           const profilInfo = responseObject;
-          this.setState({ profil: profilInfo });
+          this.setState({ profil: profilInfo, object: profilInfo });
           console.log(this.state);
         },
 
@@ -254,7 +241,12 @@ class Profil extends Component {
             <p>{this.state.message}</p>
           </form>
         </div>
-        {/*<div className="historique">{this.dataHistorique()}</div>*/}z
+
+        <h3 className="tableau" scope="row">
+          HISTORIQUE DE VOS VOYAGES
+        </h3>
+
+        <div className="historique">{this.dataHistorique()}</div>
       </div>
     );
   }
