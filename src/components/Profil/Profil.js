@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../../assets/components/Navbar/Navbar";
 import Footer from "../../assets/components/Footer/Footer.js";
+import Historique from "../Historique/Historique";
 
 /*style import*/
 import "./style.scss";
@@ -27,6 +28,21 @@ class Profil extends Component {
       },
     };
   }
+
+  dataHistorique = () => {
+    let contentDataHistorique = [];
+    this.state.profil.forEach((element, index) => {
+      contentDataHistorique.push(
+        <Historique
+          key={index}
+          travel_name={element.travel_name}
+          travellers_number={element.travellers_number}
+          total_price={element.total_price}
+          travel_date={element.travel_date}
+        />
+      );
+    });
+  };
 
   change = (event) => {
     let profil = this.state.profil;
@@ -234,53 +250,7 @@ class Profil extends Component {
             <p>{this.state.message}</p>
           </form>
         </div>
-        <div className="tableau">
-          <table>
-            <tr>
-              <th scope="row">HISTORIQUE DE VOS VOYAGES</th>
-            </tr>
-            <tr>
-              <td colSpan="2">Formule choisie</td>
-              <td
-                type="text"
-                id="travel_name"
-                name="travel_name"
-                // value={this.state.profil.order.travel_name}
-                onChange={this.change}
-              ></td>
-            </tr>
-            <tr>
-              <td colSpan="2">Nombre de voyageurs</td>
-              <td
-                type="text"
-                id="travellers_number"
-                name="travellers_number"
-                // value={this.state.profil.order.travellers_number}
-                onChange={this.change}
-              ></td>
-            </tr>
-            <tr>
-              <td colSpan="2">Prix total</td>
-              <td
-                type="text"
-                id="total_price"
-                name="total_price"
-                //  value={this.state.profil.order.total_price}
-                onChange={this.change}
-              ></td>
-            </tr>
-            <tr>
-              <td colSpan="2">Date</td>
-              <td
-                type="text"
-                id="travel_date"
-                name="travel_date"
-                //   value={this.state.profil.order.travel_date}
-                onChange={this.change}
-              ></td>
-            </tr>
-          </table>
-        </div>
+        {/*<div className="historique">{this.dataHistorique()}</div>*/}
       </div>
     );
   }
